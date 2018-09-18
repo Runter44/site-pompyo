@@ -1,0 +1,228 @@
+# This file defines the contenttypes on the website. See the documentation for
+# details: https://docs.bolt.cm/contenttypes/intro
+
+# The Homepage contenttype is a singleton: There can be only one record of this
+# contenttype.
+
+homepage:
+    name: Page d'accueil
+    singular_name: Page d'accueil
+    fields:
+        welcome_message:
+            type: textarea
+            label: Message de bienvenue
+            required: true
+            group: À la une
+        a_la_une_text:
+            type: textarea
+            label: Texte à la une
+            required: true
+        a_la_une_btn_text:
+            type: text
+            label: Texte du bouton à la une
+            required: true
+        a_la_une_btn_link:
+            type: text
+            pattern: url
+            label: Lien du bouton à la une
+            required: true
+    viewless: true
+    singleton: true
+    default_status: published
+    icon_many: "fa:home"
+    icon_one: "fa:home"
+
+news:
+    name: Actualités
+    singular_name: Actualité
+    slug: actualites
+    singular_slug: actualites
+    fields:
+        title:
+            type: text
+            label: Titre (*)
+            class: large
+            group: contenu
+            required: true
+            pattern: "^.{1,60}$"
+        slug:
+            type: slug
+            uses: title
+        image:
+            type: image
+            label: Miniature (*)
+            required: true
+            placeholder: https://source.unsplash.com/1280x768/?business,workspace,interior/__random__
+        teaser:
+            type: textarea
+            label: Résumé (*)
+            help: Le résumé doit faire moins de 300 caractères.
+            height: 150px
+            required: true
+        body:
+            type: html
+            label: Contenu (*)
+            height: 300px
+            required: true
+    record_template: news-record.twig
+    listing_template: news-listing.twig
+    listing_records: 10
+    default_status: published
+    sort: -datepublish
+    recordsperpage: 20
+    icon_many: "fa:newspaper-o"
+    icon_one: "fa:newspaper-o"
+    
+events:
+    name: Événements
+    singular_name: Événement
+    slug: evenements
+    singular_slug: evenements
+    fields:
+        title:
+            type: text
+            label: Nom de l'événement (*)
+            class: large
+            group: Déroulement
+            required: true
+        slug:
+            type: slug
+            uses: title
+        place:
+            type: text
+            label: Lieu (*)
+            required: true
+        start_date:
+            type: datetime
+            label: Date et heure de début (*)
+            required: true
+        end_date:
+            type: datetime
+            label: Date et heure de fin
+        image:
+            type: image
+            label: Miniature (*)
+            group: Contenu
+            required: true
+            placeholder: https://source.unsplash.com/1280x768/?business,workspace,interior/__random__
+        teaser:
+            type: textarea
+            label: Résumé (*)
+            help: Le résumé doit faire moins de 200 caractères.
+            height: 150px
+            required: true
+        body:
+            type: html
+            label: Description (*)
+            height: 300px
+            required: true
+    record_template: events-record.twig
+    listing_template: events-listing.twig
+    listing_records: 10
+    default_status: published
+    orderby: -start_date
+    recordsperpage: 20
+    icon_many: "fa:calendar"
+    icon_one: "fa:calendar"
+
+join_us:
+    name: Nous rejoindre
+    singular_name: Nous rejoindre
+    fields:
+        intro_text:
+            type: html
+            label: Texte de présentation
+            required: true
+            group: Contenu
+        questions:
+            type: repeater
+            label: Questions fréquentes
+            required: true
+            fields:
+                repeatquestion:
+                    type: text
+                    label: Question
+                repeatanswer:
+                    type: html
+                    label: Réponse
+    viewless: true
+    singleton: true
+    default_status: published
+    icon_many: "fa:handshake-o"
+    icon_one: "fa:handshake-o"
+
+# Possible field types:
+#
+# text - varchar(256) - input type text.
+# integer - integer - Input field for integer numbers.
+# float - double - Input field for floating numbers, stored as 'Double'.
+# geolocation - text (65kb) - Input field for geolocation. Enter an address, and the location is geocoded to latitude/longitude coordinates
+# imagelist - text (65kb) - Input type for imagelists. Add multiple images with a description. Useful for image sliders, galleries, etcetera.
+# image - varchar(256) - image select/upload widget, stored as filename.
+# file - varchar(256) - file select/upload widget, stored as filename.
+# filelist - text (65kb) - Input type for a list of files. Including a description.
+# video - varchar(256) - Video embed widget, stored as filename.
+# html - text (65kb) - wysiwyg element.
+# textarea - varchar(32768) - Simple, plain < textarea > field.
+# markdown - varchar(32768) - Simple, plain < textarea > field, which is parsed as Markdown text.
+# datetime - datetime - date and time selector widget.
+# date - datetime - date selector widget.
+# select - varchar(256) - select with predefined values
+# templateselect - varchar(256) - select with template filenames
+# checkbox - integer - checkbox-field which is 1 (checked) or 0 (unchecked)
+
+# Using YAML repeated nodes
+#
+# YAML allows the defining of "repeated nodes". These allow you to define a 'node'
+# with a 'key: &name' and referenced later with '<<: *name'
+#
+# Bolt allows you to define this with the special entry of '__nodes:' that itself
+# won't create a ContentType, but will allow you to use it in actual ContentTypes
+# to prevent repeating yourself.
+#
+# To achieve this, first create a key '__nodes:'
+#__nodes:
+#    field_defaults: &field_defaults
+#        title:
+#            type: text
+#            class: large
+#            group: main
+#        slug:
+#            type: slug
+#            uses: title
+#    template_defaults: &template_defaults
+#        template:
+#            type: templateselect
+#            filter: '*.twig'
+#            group: meta
+#
+# Then, as an example, you could create a ContentType with default fields, with
+# an additional 'image' field.
+#
+#contenttype_abc:
+#    name: ContentType Abc
+#    fields:
+#        <<: *field_defaults
+#        image:
+#            type: image
+#            attrib: title
+#            extensions: [ gif, jpg, png ]
+#        <<: *template_defaults
+#    taxonomy: [ chapters ]
+#    recordsperpage: 10
+#
+# Alternatively, or additionally, you then can then create a ContentType with
+# default fields, and a 'select' field, and a different 'templateselect' option.
+#
+#contenttype_xyz:
+#    name: ContentType Xyz
+#    fields:
+#        <<: *field_defaults
+#        selectfield:
+#            type: select
+#            values: [ none, foo, bar ]
+#        template:
+#            type: templateselect
+#            filter: '*_xyz.twig'
+#    taxonomy: [ tags ]
+#    recordsperpage: 20

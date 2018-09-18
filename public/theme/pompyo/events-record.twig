@@ -1,0 +1,30 @@
+{% extends 'partials/_master.twig' %}
+
+{% block title %}{{ record.title }}{% endblock title %}
+
+{% block body %}
+
+    {% if record.image is not empty %}
+        <div class="row">
+            <div class="col-5">
+                <img src="{{ record.image|image(1280, 660) }}" alt="{{ record.values.image.alt|default() }}"
+                     style="max-width: 100%"/>
+            </div>
+            <div class="col-7">
+                <h1 class="mb-2">{{ record.title }}</h1>
+                {% if record.end_date == null %}
+                    <h5 class="text-bleu mb-3">Le {{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}</h5>
+                {% else %}
+                    <h5 class="text-bleu mb-3">Du {{ record.start_date|localedatetime("%A %e %B à %Hh%M") }}
+                    au {{ record.end_date|localedatetime("%A %e %B %Y à %Hh%M") }}</h5>
+                {% endif %}
+                <p>{{ record.teaser|excerpt(300) }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="my-5">
+        {{ record.body|raw }}
+    </div>
+
+{% endblock body %}

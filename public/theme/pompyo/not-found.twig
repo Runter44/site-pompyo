@@ -1,0 +1,16 @@
+{% extends 'partials/_master.twig' %}
+
+{% block title %}Page introuvable{% endblock title %}
+
+{% block body %}
+
+    <div class="py-5">
+        <h2>Page introuvable</h2>
+        <h4>Cette page n'existe pas ou a été supprimée. Veuillez vérifier l'orthographe de votre lien.</h4>
+        <a href="{{ path('homepage') }}" class="btn btn-outline-danger"><i class="fa fa-home"></i> Retour à la page d'accueil</a>
+    </div>
+
+{% endblock body %}
+ 
+
+ 

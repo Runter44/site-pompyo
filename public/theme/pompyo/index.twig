@@ -1,0 +1,27 @@
+{% extends 'partials/_master.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    {% setcontent homepage = 'homepage/1' %}
+
+    <div class="row text-center text-dark bg-image-right">
+        <div class="col-md-6 col-12 p-5">
+            {{ homepage.welcome_message|nl2br }}
+        </div>
+        <div class="col-md-6 col-12 p-5">
+            {{ homepage.a_la_une_text|nl2br }}
+            <a href="{{ homepage.a_la_une_btn_link }}" class="d-block mx-auto">
+                <button class="btn btn-outline-danger">
+                    {{ homepage.a_la_une_btn_text }}
+                </button>
+            </a>
+        </div>
+    </div>
+
+    Derniers articles
+    <br>
+    Prochain événement
+
+{% endblock body %}

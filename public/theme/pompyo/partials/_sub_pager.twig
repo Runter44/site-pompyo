@@ -1,0 +1,65 @@
+{%- set link = pager.makelink() -%}
+{%- if pager.totalpages > 1 -%}
+    <nav aria-label="pagination" class="mt-3">
+        <ul class="pagination justify-content-center">
+
+            {%- if pager.current > 1 and class != "narrow" -%}
+                <li class="page-item">
+                    <a class="page-link" href="{{ link }}{{ pager.current - 1 }}"
+                       rel="noindex, follow">Précédent</a>
+                </li>
+            {%- else -%}
+                <li class="page-item disabled">
+                    <span class="page-link">Précédent</span>
+                </li>
+            {%- endif -%}
+
+            {# 'first' #}
+            {%- if pager.current > (surr + 1) -%}
+                <li class="page-item">
+                    <a class="page-link" href="{{ link }}{{ 1 }}">1</a>
+                </li>
+            {%- endif -%}
+
+            {# start with '..' if there are more than surr+1 before currentpage.. #}
+            {%- if pager.current > (surr + 2) -%}
+                <li class="page-item">
+                    <span class="page-link">&hellip;</span>
+                </li>
+            {%- endif -%}
+
+            {%- for i in max(1, pager.current - surr)..min(pager.current + surr, pager.totalpages) -%}
+                <li class="page-item{% if i == pager.current %} active{% endif %}">
+                    <a class="page-link"
+                       href="{{ link }}{{ i }}" {% if i != 1 %}rel="noindex, follow"{% endif %}>{{ i }}</a>
+                </li>
+            {%- endfor -%}
+
+            {# end with '..' if there are more than surr+1 after currentpage.. #}
+            {%- if pager.current < (pager.totalpages - surr - 1) -%}
+                <li class="page-item">
+                    <span class="page-link">&hellip;</span>
+                </li>
+            {%- endif -%}
+
+            {# 'last' #}
+            {%- if pager.current < (pager.totalpages - surr) -%}
+                <li class="page-item">
+                    <a class="page-link" href="{{ link }}{{ pager.totalpages }}"
+                       rel="noindex, follow">{{ pager.totalpages }}</a>
+                </li>
+            {%- endif -%}
+
+            {%- if pager.current < pager.totalpages and class != "narrow" -%}
+                <li class="page-item">
+                    <a class="page-link" href="{{ link }}{{ pager.current + 1 }}"
+                       rel="noindex, follow">Suivant</a>
+                </li>
+            {%- else -%}
+                <li class="page-item disabled">
+                    <span class="page-link">Suivant</span>
+                </li>
+            {%- endif -%}
+        </ul>
+    </nav>
+{%- endif -%}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}{% endblock %} - Sapeurs-Pompiers de Saint Julien de Concelles</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css', 'theme') }}">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css', 'theme') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css', 'theme') }}">
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png', 'theme') }}">
+</head>
+<body class="bg-dark">
+
+<div class="container-fluid bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 p-0">
+                <a href="{{ path('homepage') }}">
+                    <img src="{{ asset('images/logo_cis_couleur.png', 'theme') }}" alt="CIS Saint Julien de Concelles"
+                         class="logoCentre img-fluid">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-danger">
+    <div class="container">
+        {#MENU#}
+        <div class="d-flex text-center text-uppercase p-0">
+            <a href="{{ path('contentlisting', {'contenttypeslug': 'actualites'}) }}" class="lienMenu p-3 flex-fill">Actualité</a>
+            <a href="{{ path('contentlisting', {'contenttypeslug': 'evenements'}) }}" class="lienMenu p-3 flex-fill">&Eacute;vénements</a>
+            <a href="{{ path('join_us') }}" class="lienMenu p-3 flex-fill">Nous rejoindre</a>
+            <a href="#" class="lienMenu p-3 flex-fill">Le centre</a>
+            <a href="#" class="lienMenu p-3 flex-fill">Contact</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid contenu">
+    <div class="container bg-white py-3 containerPrincipal">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+
+<div class="container-fluid d-none d-md-block border-top border-danger piedDePage">
+    <div class="container py-3">
+        <div class="row text-center ">
+            <div class="col-6 text-uppercase">
+                <a href="#" class="col text-white">
+                    Mentions légales
+                </a>|
+                <a href="#" class="col text-white">
+                    Plan du site
+                </a>|
+                <a href="#" class="col text-white">
+                    Contact
+                </a>
+            </div>
+            <div class="col-2 align-middle">
+                <a href="https://www.facebook.com/Sapeurs-pompiers-de-Saint-Julien-de-Concelles-994529640570249/"
+                   target="_blank" class="text-white no-decoration hover-border-bottom">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+            </div>
+            <div class="col-4 text-secondary">
+                &copy; CIS Saint Julien de Concelles - {{ "now"|date("Y") }}
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ asset('js/jquery.min.js', 'theme') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js', 'theme') }}"></script>
+<script src="{{ asset('js/main.js', 'theme') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

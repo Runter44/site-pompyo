@@ -1,0 +1,23 @@
+{% setcontent records = contenttype ~ "/latest/3" where { id: '!' ~ record.id } %}
+
+<div class="row">
+    {% for record in records %}
+        <div class="col">
+            <div class="row">
+                <div class="col pr-1">
+                    <a href="{{ record.link }}">
+                        <img src="{{ thumbnail(record.values.image, 500, 350) }}" alt="{{ record.title }}"
+                             class="imageArticle mb-2">
+                    </a>
+                </div>
+                <div class="col pl-1">
+                    <a href="{{ record.link }}" class="text-bleu lienArticle">
+                        <p class="text-left">{{ record.title }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <li class="col-12">Aucune actualité récente à afficher</li>
+    {% endfor %}
+</div>

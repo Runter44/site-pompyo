@@ -1,0 +1,32 @@
+{% extends 'partials/_master.twig' %}
+
+{% block title %}Actualités{% endblock title %}
+
+{% block body %}
+
+    <h1 class="my-3"><i class="far fa-newspaper"></i> Dernières actualités</h1>
+
+    {% for record in records %}
+        <div class="row py-3 border-bottom border-danger">
+            {% if record.image is not empty %}
+                <div class="col-3">
+                    <a href="{{ record.link }}">
+                        <img src="{{ thumbnail(record.values.image, 500, 350) }}" alt="{{ record.title }}"
+                             class="imageArticle">
+                    </a>
+                </div>
+            {% endif %}
+            <div class="col-9 p-0">
+                <a href="{{ record.link }}" class="lienArticle">
+                    <h3 class="mb-0">{{ record.title }}</h3>
+                </a>
+                <p class="small text-bleu mb-3">Le {{ record.datepublish|localedatetime("%e %B %Y") }}, par {{ record.user.displayname }}</p>
+                <p>{{ record.teaser|excerpt(300) }}</p>
+            </div>
+        </div>
+    {% else %}
+        <h4>Il semblerait qu'aucun article n'ait été publié. Veuillez réessayer plus tard.</h4>
+    {% endfor %}
+
+    {{ pager(template = 'partials/_sub_pager.twig') }}
+{% endblock body %}

@@ -1,0 +1,35 @@
+{% extends 'partials/_master.twig' %}
+
+{% block title %}Événements{% endblock title %}
+
+{% block body %}
+
+    {% setcontent records = 'evenements' where {start_date: '>=now'} orderby 'start_date' %}
+
+    <h1 class="my-3"><i class="far fa-calendar-alt"></i> Prochains événements</h1>
+
+    {% for record in records %}
+        <div class="row py-3 border-bottom border-danger">
+            {% if record.image is not empty %}
+                <div class="col-3">
+                    <a href="{{ record.link }}">
+                        <img src="{{ thumbnail(record.values.image, 500, 350) }}" alt="{{ record.title }}"
+                             class="imageArticle">
+                    </a>
+                </div>
+            {% endif %}
+            <div class="col-9 p-0">
+                <a href="{{ record.link }}" class="lienArticle">
+                    <h3 class="mb-0">{{ record.title }}</h3>
+                </a>
+                <p class="text-bleu mb-3">
+                    Le <span class="font-weight-bold">{{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}</span>,
+                    à {{ record.place }}
+                </p>
+                <p>{{ record.teaser|excerpt(300) }}</p>
+            </div>
+        </div>
+    {% else %}
+        <h4>Il semblerait qu'aucun événement ne soit planifié pour le moment.</h4>
+    {% endfor %}
+{% endblock body %}
