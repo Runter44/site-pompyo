@@ -6,22 +6,132 @@
 
     {% setcontent homepage = 'homepage/1' %}
 
-    <div class="row text-center text-dark bg-image-right">
-        <div class="col-md-6 col-12 p-5">
-            {{ homepage.welcome_message|nl2br }}
-        </div>
-        <div class="col-md-6 col-12 p-5">
-            {{ homepage.a_la_une_text|nl2br }}
-            <a href="{{ homepage.a_la_une_btn_link }}" class="d-block mx-auto">
-                <button class="btn btn-outline-danger">
-                    {{ homepage.a_la_une_btn_text }}
-                </button>
+    <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <!-- Image de slide dans la balise style -->
+                <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3 class="text-white">Première image</h3>
+                        <p class="text-center">Ceci est la description de la première image.</p>
+                    </div>
+                </div>
+                <!-- Image de slide dans la balise style -->
+                <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3 class="text-white">Deuxième image</h3>
+                        <p class="text-center">Ceci est la description de la deuxième image.</p>
+                    </div>
+                </div>
+                <!-- Image de slide dans la balise style -->
+                <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3 class="text-white">Troisième image</h3>
+                        <p class="text-center">Ceci est la description de la troisième image.</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
             </a>
         </div>
+    </header>
+
+    <div class="container py-4">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>A la une</h2>
+                <p>
+                    {{ homepage.a_la_une_text }}
+                </p>
+                <a href="{{ homepage.a_la_une_btn_link }}" class="position-absolute btn btn-danger"
+                   style="bottom: 0; right: 0;">
+                    {{ homepage.a_la_une_btn_text }}
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <img class="img-fluid rounded" src="{{ homepage.a_la_une_image|thumbnail(700, 450) }}" alt="A la une">
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-md-8">
+                <p class="m-0">
+                    Les Sapeurs-pompiers de Saint Julien de Concelles recrutent ! N'hésitez pas à consulter notre page
+                    dédiée pour plus de renseignements sur le sujet !
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-lg btn-danger btn-block" href="{{ path('join_us') }}">Rejoignez-nous !</a>
+            </div>
+        </div>
+
+        {% setcontent event = 'evenements' where {start_date: '>=now'} orderby 'start_date' limit 1 %}
+
+        <h2>Prochain événement</h2>
+
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <a href="{{ event[1].link }}">
+                    <img class="img-fluid rounded" src="{{ event[1].image|thumbnail(650,300) }}"
+                         alt="Prochain événement">
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <a href="{{ event[1].link }}" class="lienArticle">
+                    <h2 class="card-title">{{ event[1].title }}</h2>
+                </a>
+                <p class="text-bleu">
+                    <i class="far fa-clock"></i> Le {{ event[1].start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
+                    <br>
+                    <i class="far fa-building"></i> {{ event[1].place }}
+                </p>
+                <p class="card-text">
+                    {{ event[1].teaser|excerpt(300) }}
+                </p>
+            </div>
+        </div>
+
+        {% setcontent actualites = 'actualites/latest/3' %}
+
+        <h2>Dernières actualités</h2>
+
+        <div class="row">
+            {% for actualite in actualites %}
+                <div class="col-lg-4 col-sm-6 mb-3 h-100">
+                    <div class="card h-100">
+                        <a href="{{ actualite.link }}">
+                            <img class="card-img-top" src="{{ actualite.image|thumbnail(700, 400) }}" alt="Article">
+                        </a>
+                        <div class="card-body">
+                            <a href="{{ actualite.link }}" class="lienArticle">
+                                <h4 class="card-title text-danger">
+                                    {{ actualite.title }}
+                                </h4>
+                            </a>
+                            <p class="small text-bleu">
+                                Le {{ actualite.datepublish|localedatetime("%e %B %Y") }},
+                                par {{ actualite.user.displayname }}
+                            </p>
+                            <p class="card-text">
+                                {{ actualite.teaser|raw|excerpt(300) }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
-
-    Derniers articles
-    <br>
-    Prochain événement
-
 {% endblock body %}

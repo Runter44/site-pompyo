@@ -8,13 +8,8 @@ homepage:
     name: Page d'accueil
     singular_name: Page d'accueil
     fields:
-        welcome_message:
-            type: textarea
-            label: Message de bienvenue
-            required: true
-            group: À la une
         a_la_une_text:
-            type: textarea
+            type: html
             label: Texte à la une
             required: true
         a_la_une_btn_text:
@@ -26,6 +21,8 @@ homepage:
             pattern: url
             label: Lien du bouton à la une
             required: true
+        a_la_une_image:
+            type: image
     viewless: true
     singleton: true
     default_status: published
