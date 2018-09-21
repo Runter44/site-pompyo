@@ -3,21 +3,36 @@
 {% block title %}Nous rejoindre{% endblock title %}
 
 {% block body %}
-    {% setcontent content = 'join_us/1' %}
+    <div class="container">
 
-    <h1 class="my-3"><i class="fas fa-handshake"></i> Nous rejoindre</h1>
-    {{ content.intro_text }}
+        {% setcontent content = 'join_us/1' %}
 
-    <h2 class="my-4">Questions fréquentes</h2>
+        <h1 class="my-3"><i class="fas fa-handshake"></i> Nous rejoindre</h1>
+        {{ content.intro_text }}
 
-    {% set i = 1 %}
-    {% for question in content.questions %}
-        <div class="question text-20 mb-2">
-            <div class="question-image d-inline-block">{{ i }}</div>
-            {{ question.repeatquestion }}
+        <h2 class="my-4">Questions fréquentes</h2>
+
+        <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+            {% set i = 1 %}
+            {% for question in content.questions %}
+                <div class="card">
+                    <div class="card-header" role="tab" id="heading{{ i }}">
+                        <div class="question text-20 collapsed" data-toggle="collapse"
+                             data-parent="#accordion" href="#collapse{{ i }}" style="cursor: pointer"
+                             aria-expanded="false" aria-controls="collapse{{ i }}">
+                            <div class="question-image d-inline-block align-middle">{{ i }}</div>
+                            {{ question.repeatquestion }}
+                        </div>
+                    </div>
+                    <div id="collapse{{ i }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ i }}">
+                        <div class="card-body">
+                            {{ question.repeatanswer|raw }}
+                        </div>
+                    </div>
+                </div>
+                {% set i = i + 1 %}
+            {% endfor %}
         </div>
-        {{ question.repeatanswer|raw }}
-        {% set i = i + 1 %}
-    {% endfor %}
 
+    </div>
 {% endblock body %}

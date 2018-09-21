@@ -23,6 +23,12 @@ join_us:
          _controller: controller.frontend:template
          template: join-us
 
+le_centre:
+    path: /le-centre
+    defaults:
+         _controller: controller.frontend:template
+         template: le-centre
+
 search:
     path: /search
     defaults:

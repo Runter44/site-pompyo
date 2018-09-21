@@ -24,3 +24,10 @@ categories:
     behaves_like: categories
     multiple: true
     options: [ news, events, movies, music, books, life, love, fun ]
+
+equipes:
+    slug: equipes
+    singular_slug: equipe
+    behaves_like: grouping
+    options: { equipe1: "Équipe 1", equipe2: "Équipe 2", equipe3: "Équipe 3", equipe4: "Équipe 4", inactifs: "Inactifs", anciens: "Anciens" }
+    has_sortorder: true

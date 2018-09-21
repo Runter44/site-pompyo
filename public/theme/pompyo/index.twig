@@ -66,34 +66,40 @@
         </div>
 
         <div class="row my-5">
-            <div class="col-md-8">
-                <p class="m-0">
-                    Les Sapeurs-pompiers de Saint Julien de Concelles recrutent ! N'hésitez pas à consulter notre page
-                    dédiée pour plus de renseignements sur le sujet !
-                </p>
+            <div class="col-md-9">
+                <h4 class="m-0">
+                    {{ homepage.cta_text }}
+                </h4>
             </div>
-            <div class="col-md-4">
-                <a class="btn btn-lg btn-danger btn-block" href="{{ path('join_us') }}">Rejoignez-nous !</a>
+            <div class="col-md-3">
+                <a class="btn btn-lg btn-danger btn-block" href="{{ homepage.cta_link }}">{{ homepage.cta_label }}</a>
             </div>
         </div>
 
         {% setcontent event = 'evenements' where {start_date: '>=now'} orderby 'start_date' limit 1 %}
 
-        <h2>Prochain événement</h2>
+        <h2>
+            Prochain événement
+            <a href="{{ path('contentlisting', {'contenttypeslug': 'evenements'}) }}" class="btn btn-outline-danger">
+                Tous les événements <i class="fas fa-angle-right"></i>
+            </a>
+        </h2>
 
-        <div class="row mb-4">
-            <div class="col-lg-6">
-                <a href="{{ event[1].link }}">
-                    <img class="img-fluid rounded" src="{{ event[1].image|thumbnail(650,300) }}"
-                         alt="Prochain événement">
-                </a>
+        <div class="row mb-4 divImgZoomHover">
+            <div class="col-lg-6 rounded">
+                <div class="imgContainerZoom" style="border-radius: 5px">
+                    <a href="{{ event[1].link }}">
+                        <img class="img-fluid rounded" src="{{ event[1].image|thumbnail(650,300) }}"
+                             alt="Prochain événement">
+                    </a>
+                </div>
             </div>
             <div class="col-lg-6">
                 <a href="{{ event[1].link }}" class="lienArticle">
                     <h2 class="card-title">{{ event[1].title }}</h2>
                 </a>
                 <p class="text-bleu">
-                    <i class="far fa-clock"></i> Le {{ event[1].start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
+                    <i class="far fa-clock"></i> {{ event[1].start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
                     <br>
                     <i class="far fa-building"></i> {{ event[1].place }}
                 </p>
@@ -105,15 +111,22 @@
 
         {% setcontent actualites = 'actualites/latest/3' %}
 
-        <h2>Dernières actualités</h2>
+        <h2>
+            Dernières actualités
+            <a href="{{ path('contentlisting', {'contenttypeslug': 'actualites'}) }}" class="btn btn-outline-danger">
+                Toutes les actualités <i class="fas fa-angle-right"></i>
+            </a>
+        </h2>
 
         <div class="row">
             {% for actualite in actualites %}
-                <div class="col-lg-4 col-sm-6 mb-3 h-100">
+                <div class="col-lg-4 col-sm-6 mb-3 h-100 divImgZoomHover">
                     <div class="card h-100">
-                        <a href="{{ actualite.link }}">
-                            <img class="card-img-top" src="{{ actualite.image|thumbnail(700, 400) }}" alt="Article">
-                        </a>
+                        <div class="imgContainerZoom">
+                            <a href="{{ actualite.link }}">
+                                <img class="card-img-top" src="{{ actualite.image|thumbnail(700, 400) }}" alt="Article">
+                            </a>
+                        </div>
                         <div class="card-body">
                             <a href="{{ actualite.link }}" class="lienArticle">
                                 <h4 class="card-title text-danger">

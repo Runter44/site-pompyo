@@ -3,28 +3,35 @@
 {% block title %}{{ record.title }}{% endblock title %}
 
 {% block body %}
+    <div class="container py-4">
 
-    {% if record.image is not empty %}
-        <div class="row">
-            <div class="col-5">
-                <img src="{{ record.image|image(1280, 660) }}" alt="{{ record.values.image.alt|default() }}"
-                     style="max-width: 100%"/>
+        {% if record.image is not empty %}
+            <div class="row">
+                <div class="col-5">
+                    <img src="{{ record.image|image(1280, 660) }}" alt="{{ record.values.image.alt|default() }}"
+                         style="max-width: 100%"/>
+                </div>
+                <div class="col-7">
+                    <h1 class="mb-3">{{ record.title }}</h1>
+                    <h5 class="text-bleu{% if record.end_date == null %} mb-3{% endif %}">
+                        <i class="far fa-clock"></i> {{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
+                    </h5>
+                    {% if record.end_date != null %}
+                        <h5 class="text-bleu mb-3">
+                            <i class="fas fa-arrow-right"></i> {{ record.end_date|localedatetime("%A %e %B %Y à %Hh%M") }}
+                        </h5>
+                    {% endif %}
+                    <h5 class="text-bleu mb-3">
+                        <i class="far fa-building"></i> {{ record.place }}
+                    </h5>
+                </div>
             </div>
-            <div class="col-7">
-                <h1 class="mb-2">{{ record.title }}</h1>
-                {% if record.end_date == null %}
-                    <h5 class="text-bleu mb-3">Le {{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}</h5>
-                {% else %}
-                    <h5 class="text-bleu mb-3">Du {{ record.start_date|localedatetime("%A %e %B à %Hh%M") }}
-                    au {{ record.end_date|localedatetime("%A %e %B %Y à %Hh%M") }}</h5>
-                {% endif %}
-                <p>{{ record.teaser|excerpt(300) }}</p>
-            </div>
+        {% endif %}
+        <div class="mt-3 font-italic">
+            <p>{{ record.teaser }}</p>
         </div>
-    {% endif %}
-
-    <div class="my-5">
-        {{ record.body|raw }}
+        <div class="mt-5">
+            {{ record.body|raw }}
+        </div>
     </div>
-
 {% endblock body %}

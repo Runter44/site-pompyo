@@ -12,6 +12,7 @@ homepage:
             type: html
             label: Texte à la une
             required: true
+            group: À la une
         a_la_une_btn_text:
             type: text
             label: Texte du bouton à la une
@@ -23,6 +24,21 @@ homepage:
             required: true
         a_la_une_image:
             type: image
+            label: Image à la une
+        cta_text:
+            group: CTA
+            type: text
+            required: true
+            label: Texte CTA
+        cta_label:
+            type: text
+            required: true
+            label: Label Bouton CTA
+        cta_link:
+            type: text
+            required: true
+            pattern: url
+            label: Lien Bouton CTA
     viewless: true
     singleton: true
     default_status: published
@@ -147,6 +163,60 @@ join_us:
     default_status: published
     icon_many: "fa:handshake-o"
     icon_one: "fa:handshake-o"
+
+le_centre:
+    name: Le centre
+    singular_name: Le centre
+    fields:
+        intro_text:
+            type: html
+            label: Texte de présentation
+            required: true
+            group: Contenu
+    viewless: true
+    singleton: true
+    default_status: published
+    icon_many: "fa:fire"
+    icon_one: "fa:fire"
+
+personnel:
+    name: Personnel
+    singular_name: Personnel
+    fields:
+        nom:
+            type: text
+            required: true
+            label: Nom
+            group: Informations
+        prenom:
+            type: text
+            required: true
+            label: Prénom
+        photo_profil:
+            type: image
+            label: Photo
+        grade:
+            type: select
+            required: true
+            values:
+                - Sapeur 2nde classe
+                - Sapeur 1ère classe
+                - Caporal
+                - Caporal-Chef
+                - Sergent
+                - Sergent-Chef
+                - Adjudant
+                - Adjudant-Chef
+                - Lieutenant
+                - Capitaine
+                - Commandant
+                - Lieutenant-Colonel
+                - Colonel
+    taxonomy: [ equipes ]
+    viewless: true
+    default_status: published
+    icon_many: "fa:users"
+    icon_one: "fa:user"
 
 # Possible field types:
 #
