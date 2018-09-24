@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        {% setcontent event = 'evenements' where {start_date: '>=now'} orderby 'start_date' limit 1 %}
+        {% setcontent event = 'evenements' where {start_date: '>=now'} orderby 'start_date' limit 1 returnsingle %}
 
         <h2>
             Prochain événement
@@ -88,23 +88,23 @@
         <div class="row mb-4 divImgZoomHover">
             <div class="col-lg-6 rounded">
                 <div class="imgContainerZoom" style="border-radius: 5px">
-                    <a href="{{ event[1].link }}">
-                        <img class="img-fluid rounded" src="{{ event[1].image|thumbnail(650,300) }}"
+                    <a href="{{ event.link }}">
+                        <img class="img-fluid rounded" src="{{ event.image|thumbnail(650,300) }}"
                              alt="Prochain événement">
                     </a>
                 </div>
             </div>
             <div class="col-lg-6">
-                <a href="{{ event[1].link }}" class="lienArticle">
-                    <h2 class="card-title">{{ event[1].title }}</h2>
+                <a href="{{ event.link }}" class="lienArticle">
+                    <h2 class="card-title">{{ event.title }}</h2>
                 </a>
                 <p class="text-bleu">
-                    <i class="far fa-clock"></i> {{ event[1].start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
+                    <i class="far fa-clock"></i> {{ event.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
                     <br>
-                    <i class="far fa-building"></i> {{ event[1].place }}
+                    <i class="far fa-building"></i> {{ event.place }}
                 </p>
                 <p class="card-text">
-                    {{ event[1].teaser|excerpt(300) }}
+                    {{ event.teaser|excerpt(300) }}
                 </p>
             </div>
         </div>

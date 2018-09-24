@@ -3,11 +3,86 @@
 {% block title %}Le centre{% endblock title %}
 
 {% block body %}
-    <div class="container">
+    <div class="container pb-4">
 
         {% setcontent content = 'le_centre/1' %}
 
-        <h1 class="my-3"><i class="fas fa-fire"></i> Le centre</h1>
+        <h1 class="my-3"><i class="fab fa-gripfire"></i> Le centre</h1>
+
+        <ul class="nav nav-tabs" id="tabCentre" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="personnel-tab" data-toggle="tab" href="#personnel" role="tab"
+                   aria-controls="personnel" aria-selected="true">
+                    Le personnel du CIS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="armement-tab" data-toggle="tab" href="#armement" role="tab"
+                   aria-controls="armement" aria-selected="false">
+                    L'armement du CIS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="jsp-tab" data-toggle="tab" href="#jsp" role="tab"
+                   aria-controls="jsp" aria-selected="false">
+                    Les Jeunes Sapeurs-Pompiers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="histoire-tab" data-toggle="tab" href="#histoire" role="tab"
+                   aria-controls="histoire" aria-selected="false">
+                    L'histoire du CIS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="media-tab" data-toggle="tab" href="#media" role="tab"
+                   aria-controls="media" aria-selected="false">
+                    Médias
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="tabCentreContent">
+            <div class="tab-pane p-3 fade show active" id="personnel" role="tabpanel" aria-labelledby="personnel-tab"
+                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                ...
+            </div>
+            <div class="tab-pane p-3 fade" id="armement" role="tabpanel" aria-labelledby="armement-tab"
+                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                <div class="row">
+                    {% set i = 1 %}
+                    {% for vehicule in content.armement %}
+                        <div class="col-lg-6 portfolio-item">
+                            <div class="card h-100 border-0">
+                                <img class="card-img-top" src="{{ vehicule.vehiculeimage|thumbnail(700,400) }}"
+                                     alt="Véhicule">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        {{ vehicule.vehiculename }}
+                                    </h4>
+                                    <p class="card-text">
+                                        {{ vehicule.vehiculedescription|raw }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% set i = i + 1 %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="tab-pane p-3 fade" id="jsp" role="tabpanel" aria-labelledby="jsp-tab"
+                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                {{ content.jsp_text }}
+            </div>
+            <div class="tab-pane p-3 fade" id="histoire" role="tabpanel" aria-labelledby="histoire-tab"
+                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                {{ content.history_text }}
+            </div>
+            <div class="tab-pane p-3 fade" id="media" role="tabpanel" aria-labelledby="media-tab"
+                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                Galeries d'images
+            </div>
+        </div>
 
     </div>
 {% endblock body %}

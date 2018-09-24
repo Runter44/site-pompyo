@@ -168,11 +168,32 @@ le_centre:
     name: Le centre
     singular_name: Le centre
     fields:
-        intro_text:
-            type: html
-            label: Texte de présentation
+        armement:
+            type: repeater
+            label: Armement
             required: true
-            group: Contenu
+            group: Armement
+            fields:
+                vehiculename:
+                    type: text
+                    label: Nom du véhicule
+                vehiculeimage:
+                    type: image
+                    label: Photo du véhicule
+                    extensions: [ gif, jpg, png ]
+                vehiculedescription:
+                    type: html
+                    label: Description du véhicule
+        jsp_text:
+            type: html
+            label: Texte de présentation de l'École de JSP
+            required: true
+            group: Les JSP
+        history_text:
+            type: html
+            label: Historique du centre
+            required: true
+            group: Histoire du centre
     viewless: true
     singleton: true
     default_status: published
@@ -181,7 +202,7 @@ le_centre:
 
 personnel:
     name: Personnel
-    singular_name: Personnel
+    singular_name: Personne
     fields:
         nom:
             type: text
