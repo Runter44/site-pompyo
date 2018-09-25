@@ -6,6 +6,7 @@
     <div class="container pb-4">
 
         {% setcontent content = 'le_centre/1' %}
+        {% setcontent personnel = 'personnel' %}
 
         <h1 class="my-3"><i class="fab fa-gripfire"></i> Le centre</h1>
 
@@ -43,12 +44,31 @@
         </ul>
 
         <div class="tab-content" id="tabCentreContent">
-            <div class="tab-pane p-3 fade show active" id="personnel" role="tabpanel" aria-labelledby="personnel-tab"
-                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-                ...
+            <div class="tab-pane p-3 fade show active" id="personnel" role="tabpanel" aria-labelledby="personnel-tab">
+
+                {% for equipe in app.config.get('taxonomy/equipes/options') %}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h4 class="my-4 text-danger">{{ equipe }}</h4>
+                        </div>
+                        {% for personne in personnel %}
+                            {% if personne.taxonomy != null and personne.taxonomy.equipes|first == equipe %}
+                                <div class="col-lg-2 col-sm-4 text-center mb-3">
+                                    <img class="rounded-circle img-fluid d-block mx-auto mb-3"
+                                         src="{{ personne.photo_profil|thumbnail(120,120) }}"
+                                         alt="{{ personne.prenom }} {{ personne.nom }}">
+                                    <h5 class="text-bleu">
+                                        {{ personne.prenom }} {{ personne.nom }}
+                                    </h5>
+                                    <p class="text-center">{{ personne.grade }}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
             </div>
-            <div class="tab-pane p-3 fade" id="armement" role="tabpanel" aria-labelledby="armement-tab"
-                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+            <div class="tab-pane p-3 fade" id="armement" role="tabpanel" aria-labelledby="armement-tab">
                 <div class="row">
                     {% set i = 1 %}
                     {% for vehicule in content.armement %}
@@ -70,17 +90,16 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="tab-pane p-3 fade" id="jsp" role="tabpanel" aria-labelledby="jsp-tab"
-                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-                {{ content.jsp_text }}
+            <div class="tab-pane p-3 fade" id="jsp" role="tabpanel" aria-labelledby="jsp-tab">
+                {{ content.jsp_text|raw }}
             </div>
-            <div class="tab-pane p-3 fade" id="histoire" role="tabpanel" aria-labelledby="histoire-tab"
-                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-                {{ content.history_text }}
+            <div class="tab-pane p-3 fade" id="histoire" role="tabpanel" aria-labelledby="histoire-tab">
+                {{ content.history_text|raw }}
             </div>
-            <div class="tab-pane p-3 fade" id="media" role="tabpanel" aria-labelledby="media-tab"
-                 style="border: 1px solid #dee2e6; border-top-color: transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-                Galeries d'images
+            <div class="tab-pane p-3 fade" id="media" role="tabpanel" aria-labelledby="media-tab">
+                {% for galerie in content.medias %}
+                    {{ galerie.galeriename }}
+                {% endfor %}
             </div>
         </div>
 

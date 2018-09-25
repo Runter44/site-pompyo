@@ -188,12 +188,27 @@ le_centre:
             type: html
             label: Texte de présentation de l'École de JSP
             required: true
+            height: 600px
             group: Les JSP
         history_text:
             type: html
             label: Historique du centre
             required: true
+            height: 600px
             group: Histoire du centre
+        medias:
+            type: repeater
+            group: Médias
+            label: Galeries photos
+            initial: 0
+            fields:
+                galeriename:
+                    type: text
+                    label: Nom de la galerie
+                galerieimages:
+                    type: imagelist
+                    label: Images de la galerie
+                    extensions: [ gif, jpg, png ]
     viewless: true
     singleton: true
     default_status: published
@@ -204,15 +219,15 @@ personnel:
     name: Personnel
     singular_name: Personne
     fields:
-        nom:
-            type: text
-            required: true
-            label: Nom
-            group: Informations
         prenom:
             type: text
             required: true
             label: Prénom
+            group: Informations
+        nom:
+            type: text
+            required: true
+            label: Nom
         photo_profil:
             type: image
             label: Photo
@@ -233,6 +248,9 @@ personnel:
                 - Commandant
                 - Lieutenant-Colonel
                 - Colonel
+                - Infirmier 2nde classe
+                - Infirmier 1ère classe
+                - Infirmier hors classe
     taxonomy: [ equipes ]
     viewless: true
     default_status: published
