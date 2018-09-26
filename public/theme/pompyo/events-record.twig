@@ -14,7 +14,7 @@
                 <div class="col-7">
                     <h1 class="mb-3">{{ record.title }}</h1>
                     <h5 class="text-bleu{% if record.end_date == null %} mb-3{% endif %}">
-                        <i class="far fa-clock"></i> {{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
+                        <i class="far fa-calendar-alt"></i> {{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
                     </h5>
                     {% if record.end_date != null %}
                         <h5 class="text-bleu mb-3">

@@ -7,10 +7,10 @@
 
         {% setcontent content = 'le_centre/1' %}
         {% setcontent personnel = 'personnel' %}
-
+        {% setcontent galeries_medias = 'medias' %}
         <h1 class="my-3"><i class="fab fa-gripfire"></i> Le centre</h1>
 
-        <ul class="nav nav-tabs" id="tabCentre" role="tablist">
+        <ul class="nav nav-pills" id="tabCentre" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="personnel-tab" data-toggle="tab" href="#personnel" role="tab"
                    aria-controls="personnel" aria-selected="true">
@@ -97,9 +97,25 @@
                 {{ content.history_text|raw }}
             </div>
             <div class="tab-pane p-3 fade" id="media" role="tabpanel" aria-labelledby="media-tab">
-                {% for galerie in content.medias %}
-                    {{ galerie.galeriename }}
-                {% endfor %}
+                <div class="row">
+                    {% for galerie in galeries_medias %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item divImgZoomHover mb-3">
+                            <a href="{{ galerie.link }}">
+                                <div class="card h-100 imgContainerZoom">
+                                    <div class="imgContainerZoom">
+                                        <img class="card-img-top" src="{{ galerie.images|first|thumbnail(700,400) }}"
+                                             alt="Galerie">
+                                    </div>
+                                    <div class="card-body" style="padding: 0.7rem">
+                                        <p class="m-0 text-bleu">
+                                            {{ galerie.nom }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
 

@@ -25,9 +25,10 @@
                         <h3 class="mb-0">{{ record.title }}</h3>
                     </a>
                     <p class="text-bleu mb-3">
-                        Le <span
-                                class="font-weight-bold">{{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}</span>,
-                        à {{ record.place }}
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="font-weight-bold">
+                            {{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
+                        </span>
                     </p>
                     <p>{{ record.teaser|excerpt(300) }}</p>
                 </div>

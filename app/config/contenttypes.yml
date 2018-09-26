@@ -196,19 +196,6 @@ le_centre:
             required: true
             height: 600px
             group: Histoire du centre
-        medias:
-            type: repeater
-            group: Médias
-            label: Galeries photos
-            initial: 0
-            fields:
-                galeriename:
-                    type: text
-                    label: Nom de la galerie
-                galerieimages:
-                    type: imagelist
-                    label: Images de la galerie
-                    extensions: [ gif, jpg, png ]
     viewless: true
     singleton: true
     default_status: published
@@ -256,6 +243,27 @@ personnel:
     default_status: published
     icon_many: "fa:users"
     icon_one: "fa:user"
+
+medias:
+    name: Galeries de photos
+    singular_name: Galerie de photos
+    slug: galeries
+    singular_slug: galerie
+    fields:
+        nom:
+            type: text
+            label: Nom de la galerie
+            required: true
+            group: Contenu
+        images:
+            type: imagelist
+            label: Images de la galerie
+            extensions: [ gif, jpg, png ]
+    record_template: galerie-record.twig
+    orderby: -start_date
+    default_status: published
+    icon_many: "fa:picture-o"
+    icon_one: "fa:picture-o"
 
 # Possible field types:
 #
