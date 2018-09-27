@@ -1,0 +1,62 @@
+debug:
+    enabled: true
+    address: noreply@example.com
+csrf: true
+contact:
+    submission:
+        ajax: false
+    notification:
+        enabled: true
+        debug: false
+        debug_address: name@example.com
+        debug_smtp: true
+        subject: 'Votre message a bien été envoyé'
+        from_name: name
+        from_email: email
+        replyto_email: email
+        replyto_name: name
+        to_name: 'My Site'
+        to_email: noreply@example.com
+    feedback:
+        success: 'Votre message a bien été envoyé !'
+        error: 'Certains champs du formulaire sont incorrects. Veuillez vérifier les données entrées.'
+    fields:
+        prenom:
+            type: text
+            options:
+                label: Prénom
+                required: true
+        nom:
+            type: text
+            options:
+                label: Nom
+                required: true
+        email:
+            type: text
+            options:
+                required: true
+                label: 'Adresse e-mail'
+                attr:
+                    placeholder: 'Your email...'
+                constraints:
+                    - NotBlank
+                    - Email
+        objet:
+            type: text
+            options:
+                label: Objet
+                required: true
+        message:
+            type: textarea
+            options:
+                required: true
+                label: 'Votre message'
+                attr:
+                    placeholder: 'Your message...'
+                    class: myclass
+        submit:
+            type: submit
+            options:
+                label: 'Envoyer mon message'
+                attr:
+                    class: 'button primary'

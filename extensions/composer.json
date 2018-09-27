@@ -31,5 +31,9 @@
         "post-autoload-dump": "Bolt\\Composer\\EventListener\\PackageEventListener::dump",
         "post-package-install": "Bolt\\Composer\\EventListener\\PackageEventListener::handle",
         "post-package-update": "Bolt\\Composer\\EventListener\\PackageEventListener::handle"
+    },
+    "require": {
+        "bolt/boltforms": "^4.2",
+        "rossriley/formeditor": "^4.0"
     }
 }

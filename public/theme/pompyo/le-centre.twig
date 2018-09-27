@@ -38,7 +38,7 @@
             <li class="nav-item">
                 <a class="nav-link" id="media-tab" data-toggle="tab" href="#media" role="tab"
                    aria-controls="media" aria-selected="false">
-                    Médias
+                    Galeries photos
                 </a>
             </li>
         </ul>
@@ -100,19 +100,21 @@
                 <div class="row">
                     {% for galerie in galeries_medias %}
                         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item divImgZoomHover mb-3">
-                            <a href="{{ galerie.link }}">
-                                <div class="card h-100 imgContainerZoom">
-                                    <div class="imgContainerZoom">
+                            <div class="card h-100 imgContainerZoom">
+                                <div class="imgContainerZoom">
+                                    <a href="{{ galerie.link }}">
                                         <img class="card-img-top" src="{{ galerie.images|first|thumbnail(700,400) }}"
                                              alt="Galerie">
-                                    </div>
-                                    <div class="card-body" style="padding: 0.7rem">
-                                        <p class="m-0 text-bleu">
+                                    </a>
+                                </div>
+                                <div class="card-body" style="padding: 0.7rem">
+                                    <a href="{{ galerie.link }}" style="text-decoration: none;">
+                                        <p class="m-0 text-bleu text-left">
                                             {{ galerie.nom }}
                                         </p>
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     {% endfor %}
                 </div>

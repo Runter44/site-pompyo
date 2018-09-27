@@ -34,7 +34,7 @@ p {
     max-height: 100px;
 }
 
-.carousel-item {
+.carousel-item-home {
     height: 65vh;
     min-height: 300px;
     background: no-repeat center center scroll;

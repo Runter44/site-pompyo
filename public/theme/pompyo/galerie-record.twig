@@ -7,13 +7,23 @@
 
         <h1><i class="far fa-images"></i> {{ record.nom }}</h1>
 
+        <p>{{ record.description|raw }}</p>
+
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                {% set i = 0 %}
+                {% for image in record.images %}
+                    <li data-target="#carouselIndicatorSlide{{ i }}"
+                        data-slide-to="{{ i }}"{% if i == 0 %} class="active"{% endif %}></li>
+                    {% set i = i + 1 %}
+                {% endfor %}
+            </ol>
             <div class="carousel-inner">
                 {% set i = 0 %}
                 {% for image in record.images %}
                     <div class="carousel-item{% if i == 0 %} active{% endif %}">
-                        <img class="d-block w-100" src="{{ image|thumbnail(800,400) }}"
-                             alt="Slide {{ i }}">
+                        <img class="d-block w-100" src="{{ image|thumbnail(1200,700) }}"
+                             alt="Slide {{ i }}"/>
                     </div>
                     {% set i = i + 1 %}
                 {% endfor %}

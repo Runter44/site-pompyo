@@ -39,31 +39,37 @@
 </div>
 
 <div class="contenu containerPrincipal">
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
 </div>
 
 <div class="container-fluid d-none d-md-block border-top border-danger piedDePage bg-dark">
     <div class="container py-3">
-        <div class="row text-center ">
-            <div class="col-6 text-uppercase">
-                <a href="#" class="col text-white">
-                    Mentions légales
-                </a>|
-                <a href="#" class="col text-white">
-                    Plan du site
-                </a>|
-                <a href="#" class="col text-white">
-                    Contact
+        <div class="row text-center">
+            <div class="col-4">
+                <h5 class="text-uppercase"><span class="border-bottom border-white">Liens rapides</span></h5>
+                <a href="#" class="col text-white d-block">
+                    <i class="fas fa-gavel"></i> Mentions légales
+                </a>
+                <a href="#" class="col text-white d-block">
+                    <i class="far fa-map"></i> Plan du site
+                </a>
+                <a href="#" class="col text-white d-block">
+                    <i class="far fa-envelope"></i> Contact
                 </a>
             </div>
-            <div class="col-2 align-middle">
+            <div class="col-4">
+                <h5 class="text-uppercase"><span class="border-bottom border-white">Réseaux sociaux</span></h5>
                 <a href="https://www.facebook.com/Sapeurs-pompiers-de-Saint-Julien-de-Concelles-994529640570249/"
                    target="_blank" class="text-white no-decoration hover-border-bottom">
                     <i class="fab fa-facebook"></i> Facebook
+                </a><br>
+                <a href="https://www.instagram.com/sapeurspompiersconcellois/"
+                   target="_blank" class="text-white no-decoration hover-border-bottom">
+                    <i class="fab fa-instagram"></i> Instagram
                 </a>
             </div>
             <div class="col-4 text-secondary">
-                &copy; CIS Saint Julien de Concelles - {{ "now"|date("Y") }}
+                <span class="position-absolute" style="bottom: 0; right: 0; left: 0;">&copy; {{ "now"|date("Y") }} - CIS Saint Julien de Concelles</span>
             </div>
         </div>
     </div>

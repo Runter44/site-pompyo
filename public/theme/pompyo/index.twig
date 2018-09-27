@@ -15,21 +15,24 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <!-- Image de slide dans la balise style -->
-                <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+                <div class="carousel-item carousel-item-home active"
+                     style="background-image: url('http://placehold.it/1900x1080')">
                     <div class="carousel-caption d-none d-md-block">
                         <h3 class="text-white">Première image</h3>
                         <p class="text-center">Ceci est la description de la première image.</p>
                     </div>
                 </div>
                 <!-- Image de slide dans la balise style -->
-                <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+                <div class="carousel-item carousel-item-home"
+                     style="background-image: url('http://placehold.it/1900x1080')">
                     <div class="carousel-caption d-none d-md-block">
                         <h3 class="text-white">Deuxième image</h3>
                         <p class="text-center">Ceci est la description de la deuxième image.</p>
                     </div>
                 </div>
                 <!-- Image de slide dans la balise style -->
-                <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+                <div class="carousel-item carousel-item-home"
+                     style="background-image: url('http://placehold.it/1900x1080')">
                     <div class="carousel-caption d-none d-md-block">
                         <h3 class="text-white">Troisième image</h3>
                         <p class="text-center">Ceci est la description de la troisième image.</p>
@@ -147,4 +150,26 @@
         </div>
 
     </div>
+
+    <script type="application/ld+json">
+        { "@context": "http://schema.org",
+        "@type": "FireStation",
+        "name": "CIS Saint Julien de Concelles",
+        "url": "http://www.pompiers-stjuliendeconcelles.fr/",
+        "image": "http://www.pompiers-stjuliendeconcelles.fr/theme/pompyo/images/logo_cis_couleur.png",
+        "foundingDate": "1948",
+        "telephone": "0607147410",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "17 rue de Basse Rivière",
+            "addressLocality": "Saint Julien de Concelles",
+            "addressRegion": "Pays de la Loire",
+            "postalCode": "44450",
+            "addressCountry": "France"
+        },
+        "sameAs": [
+            "https://www.facebook.com/Sapeurs-pompiers-de-Saint-Julien-de-Concelles-994529640570249/",
+            "https://www.instagram.com/sapeurspompiersconcellois/"
+        ]}
+    </script>
 {% endblock body %}

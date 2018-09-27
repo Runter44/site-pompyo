@@ -255,6 +255,10 @@ medias:
             label: Nom de la galerie
             required: true
             group: Contenu
+        description:
+            type: html
+            label: Description de la galerie
+            required: true
         images:
             type: imagelist
             label: Images de la galerie
