@@ -2,6 +2,40 @@
 
 {% block title %}{{ record.title }}{% endblock title %}
 
+{% block stylesheets %}
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Event",
+          "location": {
+            "@type": "Place",
+            "name": "{{ record.place }}",
+            "address": "{{ record.place }}"
+          },
+          "image": {
+		    "@type": "ImageObject",
+		    "url": "{{ absolute_url(record.image|image(1280, 660)) }}",
+		    "height": 660,
+		    "width": 1280
+		  },
+          "name": "{{ record.title }}",
+          "startDate": "{{ record.start_date }}",
+          {% if record.end_date != null %}
+          "endDate": "{{ record.end_date }}",
+          {% endif %}
+          "performer": {
+		    "@type": "Organization",
+		    "name": "CIS Saint Julien de Concelles",
+		    "logo": {
+		      "@type": "ImageObject",
+		      "url": "{{ absolute_url("/theme/pompyo/images/logo_cis_couleur.png") }}"
+		    }
+		  },
+          "description": "{{ record.teaser|excerpt(200) }}"
+        }
+    </script>
+{% endblock stylesheets %}
+
 {% block body %}
     <div class="container py-4">
 

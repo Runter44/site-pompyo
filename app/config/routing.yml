@@ -29,10 +29,16 @@ le_centre:
          _controller: controller.frontend:template
          template: le-centre
 
-search:
-    path: /search
+contact:
+    path: /contact
     defaults:
-        _controller: controller.frontend:search
+         _controller: controller.frontend:template
+         template: contact
+
+#search:
+#    path: /search
+#    defaults:
+#        _controller: controller.frontend:search
 
 preview:
     path: /preview/{contenttypeslug}

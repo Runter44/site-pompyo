@@ -8,11 +8,15 @@ homepage:
     name: Page d'accueil
     singular_name: Page d'accueil
     fields:
+        carousel_images:
+            type: imagelist
+            label: Images défilantes
+            group: À la une
+            extensions: [ gif, jpg, png ]
         a_la_une_text:
             type: html
             label: Texte à la une
             required: true
-            group: À la une
         a_la_une_btn_text:
             type: text
             label: Texte du bouton à la une
@@ -268,6 +272,22 @@ medias:
     default_status: published
     icon_many: "fa:picture-o"
     icon_one: "fa:picture-o"
+
+contact:
+    name: Contact
+    singular_name: Contact
+    fields:
+        contact_text:
+            type: html
+            label: Texte d'introduction
+            required: true
+            height: 600px
+            group: Contact
+    viewless: true
+    singleton: true
+    default_status: published
+    icon_many: "fa:envelope"
+    icon_one: "fa:envelope"
 
 # Possible field types:
 #

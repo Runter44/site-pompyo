@@ -1,0 +1,16 @@
+{% extends 'partials/_master.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    {% setcontent contact = 'contact' limit 1 returnsingle %}
+
+    <div class="container py-4">
+        <h1><i class="far fa-envelope"></i> Contact</h1>
+        <p>
+            {{ contact.contact_text|raw }}
+        </p>
+
+        {{ boltforms('contact') }}
+    </div>
+{% endblock body %}

@@ -2,6 +2,42 @@
 
 {% block title %}{{ record.title }}{% endblock title %}
 
+{% block stylesheets %}
+    <script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "NewsArticle",
+		  "mainEntityOfPage": {
+		    "@type": "WebPage",
+		    "@id": "{{ absolute_url(record.link) }}"
+		  },
+		  "headline": "{{ record.title }}",
+		  "image": {
+		    "@type": "ImageObject",
+		    "url": "{{ absolute_url(record.image|image(1280, 660)) }}",
+		    "height": 660,
+		    "width": 1280
+		  },
+		  "datePublished": "{{ record.datepublish }}",
+		  "dateModified": "{{ record.datechanged }}",
+		  "author": {
+		    "@type": "Person",
+		    "name": "{{ record.user.displayname }}",
+			"homeLocation": "France"
+		  },
+		  "publisher": {
+		    "@type": "Organization",
+		    "name": "CIS Saint Julien de Concelles",
+		    "logo": {
+		      "@type": "ImageObject",
+		      "url": "{{ absolute_url("/theme/pompyo/images/logo_cis_couleur.png") }}"
+		    }
+		  },
+		  "description": "{{ record.teaser|excerpt(200) }}"
+		}
+	</script>
+{% endblock stylesheets %}
+
 {% block body %}
     <div class="container py-4">
 

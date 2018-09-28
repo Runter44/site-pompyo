@@ -2,6 +2,32 @@
 
 {% block title %}Accueil{% endblock %}
 
+{% block stylesheets %}
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "FireStation",
+            "name": "CIS Saint Julien de Concelles",
+            "url": "{{ absolute_url(path('homepage')) }}",
+            "image": "{{ absolute_url("/theme/pompyo/images/logo_cis_couleur.png") }}",
+            "foundingDate": "1948",
+            "telephone": "0607147410",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "17 rue de Basse Rivière",
+                "addressLocality": "Saint Julien de Concelles",
+                "addressRegion": "Pays de la Loire",
+                "postalCode": "44450",
+                "addressCountry": "France"
+            },
+            "sameAs": [
+                "https://www.facebook.com/Sapeurs-pompiers-de-Saint-Julien-de-Concelles-994529640570249/",
+                "https://www.instagram.com/sapeurspompiersconcellois/"
+            ]
+        }
+    </script>
+{% endblock stylesheets %}
+
 {% block body %}
 
     {% setcontent homepage = 'homepage/1' %}
@@ -9,35 +35,22 @@
     <header>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                {% set i = 0 %}
+                {% for image in homepage.carousel_images %}
+                    <li data-target="#carouselExampleIndicators"
+                        data-slide-to="{{ i }}"{% if i == 0 %} class="active"{% endif %}></li>
+                    {% set i = i + 1 %}
+                {% endfor %}
             </ol>
             <div class="carousel-inner" role="listbox">
-                <!-- Image de slide dans la balise style -->
-                <div class="carousel-item carousel-item-home active"
-                     style="background-image: url('http://placehold.it/1900x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3 class="text-white">Première image</h3>
-                        <p class="text-center">Ceci est la description de la première image.</p>
+                {% set i = 0 %}
+                {% for image in homepage.carousel_images %}
+                    <!-- Image de slide dans la balise style -->
+                    <div class="carousel-item carousel-item-home{% if i == 0 %} active{% endif %}"
+                         style="background-image: url('{{ image|thumbnail(1900,1080) }}')">
                     </div>
-                </div>
-                <!-- Image de slide dans la balise style -->
-                <div class="carousel-item carousel-item-home"
-                     style="background-image: url('http://placehold.it/1900x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3 class="text-white">Deuxième image</h3>
-                        <p class="text-center">Ceci est la description de la deuxième image.</p>
-                    </div>
-                </div>
-                <!-- Image de slide dans la balise style -->
-                <div class="carousel-item carousel-item-home"
-                     style="background-image: url('http://placehold.it/1900x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3 class="text-white">Troisième image</h3>
-                        <p class="text-center">Ceci est la description de la troisième image.</p>
-                    </div>
-                </div>
+                    {% set i = i + 1 %}
+                {% endfor %}
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -150,26 +163,4 @@
         </div>
 
     </div>
-
-    <script type="application/ld+json">
-        { "@context": "http://schema.org",
-        "@type": "FireStation",
-        "name": "CIS Saint Julien de Concelles",
-        "url": "http://www.pompiers-stjuliendeconcelles.fr/",
-        "image": "http://www.pompiers-stjuliendeconcelles.fr/theme/pompyo/images/logo_cis_couleur.png",
-        "foundingDate": "1948",
-        "telephone": "0607147410",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "17 rue de Basse Rivière",
-            "addressLocality": "Saint Julien de Concelles",
-            "addressRegion": "Pays de la Loire",
-            "postalCode": "44450",
-            "addressCountry": "France"
-        },
-        "sameAs": [
-            "https://www.facebook.com/Sapeurs-pompiers-de-Saint-Julien-de-Concelles-994529640570249/",
-            "https://www.instagram.com/sapeurspompiersconcellois/"
-        ]}
-    </script>
 {% endblock body %}

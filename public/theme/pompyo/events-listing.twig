@@ -11,16 +11,16 @@
         <h1 class="my-3"><i class="far fa-calendar-alt"></i> Prochains événements</h1>
 
         {% for record in records %}
-            <div class="row py-3 border-bottom border-danger">
+            <div class="row py-3 border-bottom border-danger divImgZoomHover">
                 {% if record.image is not empty %}
-                    <div class="col-3">
+                    <div class="col-3 imgContainerZoom">
                         <a href="{{ record.link }}">
                             <img src="{{ thumbnail(record.values.image, 500, 350) }}" alt="{{ record.title }}"
                                  class="imageArticle">
                         </a>
                     </div>
                 {% endif %}
-                <div class="col-9 p-0">
+                <div class="col-9 p-0 pl-3">
                     <a href="{{ record.link }}" class="lienArticle">
                         <h3 class="mb-0">{{ record.title }}</h3>
                     </a>

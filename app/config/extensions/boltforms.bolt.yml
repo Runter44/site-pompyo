@@ -1,10 +1,17 @@
 debug:
-    enabled: true
+    enabled: false
     address: noreply@example.com
 csrf: true
 contact:
     submission:
         ajax: false
+    recaptcha:
+        enabled: true
+        label: "Veuillez prouver que vous n'êtes pas un robot"
+        public_key: '6LevW1gUAAAAALUekVHYI7TcmtxqbOoFNs9cnYR3'
+        private_key: '6LevW1gUAAAAANQdp3FOMrWOhEdcJzzms59JuYTC'
+        error_message: "Veuillez cocher cette case pour continuer"
+        theme: basic
     notification:
         enabled: true
         debug: false
@@ -12,32 +19,47 @@ contact:
         debug_smtp: true
         subject: 'Votre message a bien été envoyé'
         from_name: name
-        from_email: email
+        from_email: pompiersstjuliendeconcelles@gmail.com
         replyto_email: email
         replyto_name: name
         to_name: 'My Site'
-        to_email: noreply@example.com
+        to_email: pompiersstjuliendeconcelles@gmail.com
     feedback:
         success: 'Votre message a bien été envoyé !'
         error: 'Certains champs du formulaire sont incorrects. Veuillez vérifier les données entrées.'
+    templates:
+            form: partials/_contact.twig
     fields:
         prenom:
             type: text
             options:
                 label: Prénom
+                label_attr:
+                    class: 'text-danger'
                 required: true
+                attr:
+                    placeholder: 'Votre prénom'
+                    class: 'form-control'
         nom:
             type: text
             options:
                 label: Nom
+                label_attr:
+                    class: 'text-danger'
                 required: true
+                attr:
+                    placeholder: 'Votre nom'
+                    class: 'form-control'
         email:
             type: text
             options:
                 required: true
                 label: 'Adresse e-mail'
+                label_attr:
+                    class: 'text-danger'
                 attr:
-                    placeholder: 'Your email...'
+                    placeholder: 'Votre adresse mail'
+                    class: 'form-control'
                 constraints:
                     - NotBlank
                     - Email
@@ -45,18 +67,26 @@ contact:
             type: text
             options:
                 label: Objet
+                label_attr:
+                    class: 'text-danger'
                 required: true
+                attr:
+                    placeholder: "L'objet de votre message"
+                    class: 'form-control'
         message:
             type: textarea
             options:
                 required: true
                 label: 'Votre message'
+                label_attr:
+                    class: 'text-danger'
                 attr:
-                    placeholder: 'Your message...'
-                    class: myclass
+                    placeholder: 'Votre message'
+                    class: 'form-control'
+                    rows: "20"
         submit:
             type: submit
             options:
                 label: 'Envoyer mon message'
                 attr:
-                    class: 'button primary'
+                    class: 'btn btn-danger d-block mx-auto mt-4'

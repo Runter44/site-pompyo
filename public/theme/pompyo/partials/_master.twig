@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css', 'theme') }}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css', 'theme') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css', 'theme') }}">
-    {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png', 'theme') }}">
+    {% block stylesheets %}{% endblock %}
 </head>
 <body class="bg-white">
 
@@ -33,7 +33,7 @@
             <a href="{{ path('contentlisting', {'contenttypeslug': 'evenements'}) }}" class="lienMenu p-3 flex-fill">&Eacute;vénements</a>
             <a href="{{ path('join_us') }}" class="lienMenu p-3 flex-fill">Nous rejoindre</a>
             <a href="{{ path('le_centre') }}" class="lienMenu p-3 flex-fill">Le centre</a>
-            <a href="#" class="lienMenu p-3 flex-fill">Contact</a>
+            <a href="{{ path('contact') }}" class="lienMenu p-3 flex-fill">Contact</a>
         </div>
     </div>
 </div>
@@ -53,7 +53,7 @@
                 <a href="#" class="col text-white d-block">
                     <i class="far fa-map"></i> Plan du site
                 </a>
-                <a href="#" class="col text-white d-block">
+                <a href="{{ path('contact') }}" class="col text-white d-block">
                     <i class="far fa-envelope"></i> Contact
                 </a>
             </div>
