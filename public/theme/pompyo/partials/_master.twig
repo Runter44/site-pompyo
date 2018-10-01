@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css', 'theme') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css', 'theme') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png', 'theme') }}">
+    <link rel="sitemap" type="application/xml" title="Plan du site" href="/plan-site.xml" />
     {% block stylesheets %}{% endblock %}
 </head>
 <body class="bg-white">
@@ -28,12 +29,12 @@
 <div class="container-fluid bg-danger">
     <div class="container">
         {#MENU#}
-        <div class="d-flex text-center text-uppercase p-0">
-            <a href="{{ path('contentlisting', {'contenttypeslug': 'actualites'}) }}" class="lienMenu p-3 flex-fill">Actualité</a>
-            <a href="{{ path('contentlisting', {'contenttypeslug': 'evenements'}) }}" class="lienMenu p-3 flex-fill">&Eacute;vénements</a>
-            <a href="{{ path('join_us') }}" class="lienMenu p-3 flex-fill">Nous rejoindre</a>
-            <a href="{{ path('le_centre') }}" class="lienMenu p-3 flex-fill">Le centre</a>
-            <a href="{{ path('contact') }}" class="lienMenu p-3 flex-fill">Contact</a>
+        <div class="d-md-flex text-center text-uppercase p-0">
+            <a href="{{ path('contentlisting', {'contenttypeslug': 'actualites'}) }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">Actualité</a>
+            <a href="{{ path('contentlisting', {'contenttypeslug': 'evenements'}) }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">&Eacute;vénements</a>
+            <a href="{{ path('join_us') }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">Nous rejoindre</a>
+            <a href="{{ path('le_centre') }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">Le centre</a>
+            <a href="{{ path('contact') }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">Contact</a>
         </div>
     </div>
 </div>

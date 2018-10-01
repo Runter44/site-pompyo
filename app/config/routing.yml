@@ -35,6 +35,14 @@ contact:
          _controller: controller.frontend:template
          template: contact
 
+sitemap:
+  path: /sitemap
+  defaults: { _controller: sitemap.controller:sitemap }
+
+sitemapXml:
+  path: /sitemap.xml
+  defaults: { _controller: sitemap.controller:sitemapXml }
+
 #search:
 #    path: /search
 #    defaults:

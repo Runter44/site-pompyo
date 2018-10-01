@@ -34,6 +34,6 @@
     },
     "require": {
         "bolt/boltforms": "^4.2",
-        "rossriley/formeditor": "^4.0"
+        "bolt/sitemap": "^2.5"
     }
 }

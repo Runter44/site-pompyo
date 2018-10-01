@@ -2,6 +2,8 @@
 
 namespace Bundle\Site;
 
+use Bolt\Extension\Bolt\Sitemap\SitemapEvent;
+use Bolt\Extension\Bolt\Sitemap\SitemapEvents;
 use Bolt\Extension\SimpleExtension;
 
 /**
@@ -17,4 +19,18 @@ use Bolt\Extension\SimpleExtension;
  */
 class CustomisationExtension extends SimpleExtension
 {
+//    protected function subscribe($dispatcher)
+//    {
+//        $dispatcher->addListener(SitemapEvents::AFTER_COLLECTING_LINKS,
+//            function ($event) {
+//                /** @var SitemapEvent $event */
+//                $links = $event->getLinks();
+//                $links->add([
+//                    'link'  => '/le-centre',
+//                    'title' => 'Le centre',
+//                    'depth' => 1,
+//                ]);
+//            }
+//        );
+//    }
 }

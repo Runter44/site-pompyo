@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12ed46f957905cdc960f57206fea4297",
+    "content-hash": "175f4245c67dff7c929342d28242766a",
     "packages": [
         {
             "name": "bolt/boltforms",
@@ -129,6 +129,64 @@
             "time": "2018-05-19T14:33:45+00:00"
         },
         {
+            "name": "bolt/sitemap",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bolt/Sitemap.git",
+                "reference": "f7e67187c7fddd0335e90d5ae000c471593ed6bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bolt/Sitemap/zipball/f7e67187c7fddd0335e90d5ae000c471593ed6bc",
+                "reference": "f7e67187c7fddd0335e90d5ae000c471593ed6bc",
+                "shasum": ""
+            },
+            "require": {
+                "bolt/bolt": "^3.0"
+            },
+            "type": "bolt-extension",
+            "extra": {
+                "bolt-icon": "icon-sitemap.png",
+                "bolt-class": "Bolt\\Extension\\Bolt\\Sitemap\\SitemapExtension",
+                "branch-alias": {
+                    "dev-2.x": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bolt\\Extension\\Bolt\\Sitemap\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bob den Otter",
+                    "email": "bob@twokings.nl"
+                },
+                {
+                    "name": "Patrick van Kouteren",
+                    "email": "info@wedesignit.nl"
+                },
+                {
+                    "name": "Gawain Lynch",
+                    "email": "gawain.lynch@gmail.com"
+                }
+            ],
+            "description": "An extension to create XML sitemaps for your Bolt website.",
+            "keywords": [
+                "SEO",
+                "sitemap"
+            ],
+            "support": {
+                "source": "https://github.com/bolt/Sitemap/tree/2.x",
+                "issues": "https://github.com/bolt/Sitemap/issues"
+            },
+            "time": "2018-06-03T09:18:36+00:00"
+        },
+        {
             "name": "google/recaptcha",
             "version": "1.2.1",
             "source": {
@@ -192,64 +250,6 @@
                 "issues": "https://github.com/google/recaptcha/issues"
             },
             "time": "2018-08-05T09:31:53+00:00"
-        },
-        {
-            "name": "rossriley/formeditor",
-            "version": "4.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rossriley/bolt-extension-formeditor.git",
-                "reference": "80eeadf1fbffe0dd0ecec5b52cbbcfc4001da5c1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rossriley/bolt-extension-formeditor/zipball/80eeadf1fbffe0dd0ecec5b52cbbcfc4001da5c1",
-                "reference": "80eeadf1fbffe0dd0ecec5b52cbbcfc4001da5c1",
-                "shasum": ""
-            },
-            "require": {
-                "bolt/bolt": ">3.0,<4.0",
-                "bolt/boltforms": "^4.0"
-            },
-            "type": "bolt-extension",
-            "extra": {
-                "bolt-assets": "assets",
-                "bolt-screenshots": [
-                    "screenshot.png",
-                    "screenshot2.png"
-                ],
-                "bolt-class": "Bolt\\Extensions\\Ross\\FormEditor\\Extension",
-                "branch-alias": {
-                    "dev-v4": "4.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Bolt\\Extensions\\Ross\\FormEditor\\": "src",
-                    "Bolt\\Extensions\\Ross\\FormEditor\\Tests\\": "tests"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ross Riley",
-                    "email": "riley.ross@gmail.com"
-                }
-            ],
-            "description": "An extension to Bolt Forms to provide a basic UI",
-            "keywords": [
-                "boltforms",
-                "editor",
-                "forms",
-                "ui"
-            ],
-            "support": {
-                "source": "https://github.com/rossriley/bolt-extension-formeditor/tree/4.0.4",
-                "issues": "https://github.com/rossriley/bolt-extension-formeditor/issues"
-            },
-            "time": "2017-12-27T10:33:21+00:00"
         }
     ],
     "packages-dev": [],
