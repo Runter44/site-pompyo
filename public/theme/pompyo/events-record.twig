@@ -10,7 +10,13 @@
           "location": {
             "@type": "Place",
             "name": "{{ record.place }}",
-            "address": "{{ record.place }}"
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "{{ record.place_street_adress }}",
+              "postalCode": "{{ record.place_postal_code }}",
+              "addressLocality": "{{ record.place_adress_locality }}",
+              "addressCountry": "France"
+            }
           },
           "image": {
 		    "@type": "ImageObject",
@@ -55,9 +61,11 @@
                             <i class="fas fa-arrow-right"></i> {{ record.end_date|localedatetime("%A %e %B %Y à %Hh%M") }}
                         </h5>
                     {% endif %}
-                    <h5 class="text-bleu mb-3">
+                    <h5 class="text-bleu mb-0">
                         <i class="far fa-building"></i> {{ record.place }}
                     </h5>
+                    <p class="mb-3 text-bleu"><i class="fas fa-map-marked-alt"></i> {{ record.place_street_adress }}<br>
+                    <span style="margin-left: 22px;"></span>{{ record.place_postal_code }} {{ record.place_adress_locality }}</p>
                 </div>
             </div>
         {% endif %}

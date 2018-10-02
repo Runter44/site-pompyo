@@ -3,32 +3,36 @@
 {% block title %}Plan du site{% endblock title %}
 
 {% block body %}
-    <ul>
-    {% set depth = 1 %}
-    {% for entry in entries %}
-        {% if entry.link is defined %}
-            {% if entry.depth is defined and entry.depth > depth %}
-                <ul>
-            {% endif %}
-            {% if entry.depth is defined and entry.depth < depth %}
-                </ul>
-            {% endif %}
-            <li>
-                {% if entry.link is not empty %}
-                    <a href="{{ entry.link }}">{{ entry.title }}</a>
-                {% else %}
-                    <span>{{ entry.title }}</span>
+    <div class="container py-4">
+        <h1 class="mb-3"><i class="far fa-map"></i> Plan du site</h1>
+
+        <ul>
+            {% set depth = 1 %}
+            {% for entry in entries %}
+                {% if entry.link is defined %}
+                    {% if entry.depth is defined and entry.depth > depth %}
+                        <ul>
+                    {% endif %}
+                    {% if entry.depth is defined and entry.depth < depth %}
+                        </ul>
+                    {% endif %}
+                    <li>
+                        {% if entry.link is not empty %}
+                            <a href="{{ entry.link }}">{{ entry.title }}</a>
+                        {% else %}
+                            <span>{{ entry.title }}</span>
+                        {% endif %}
+                    </li>
+                    {% if entry.depth is defined %}
+                        {% set depth = entry.depth %}
+                    {% else %}
+                        {% set depth = 1 %}
+                    {% endif %}
                 {% endif %}
-            </li>
-            {% if entry.depth is defined %}
-                {% set depth = entry.depth %}
-            {% else %}
-                {% set depth = 1 %}
-            {% endif %}
-        {% endif %}
-    {% endfor %}
-    {% if depth > 1 %}
+            {% endfor %}
+            {% if depth > 1 %}
         </ul>
-    {% endif %}
-    </ul>
+        {% endif %}
+        </ul>
+    </div>
 {% endblock body %}

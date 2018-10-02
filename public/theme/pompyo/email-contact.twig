@@ -1,0 +1,16 @@
+<p>
+    Bonjour, quelqu'un a formulé une demande de contact via le formulaire du site du CIS Saint Julien de Concelles.
+</p>
+
+<p>
+    Envoyé par <b>{{ data.prenom }} {{ data.nom }}</b>.<br>
+    Adresse e-mail : <b>{{ data.email }}</b>
+</p>
+
+<p>
+    Sujet du message : <b>{{ data.objet }}</b><br>
+    Message :
+</p>
+<p>
+    {{ data.message|nl2br }}
+</p>

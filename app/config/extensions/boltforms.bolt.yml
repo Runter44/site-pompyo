@@ -2,91 +2,93 @@ debug:
     enabled: false
     address: noreply@example.com
 csrf: true
+recaptcha:
+    enabled: true
+    label: "Veuillez cocher cette case pour continuer"
+    public_key: '6LevW1gUAAAAALUekVHYI7TcmtxqbOoFNs9cnYR3'
+    private_key: '6LevW1gUAAAAANQdp3FOMrWOhEdcJzzms59JuYTC'
+    error_message: "Veuillez cocher cette case pour continuer"
+    theme: clean
 contact:
     submission:
         ajax: false
-    recaptcha:
-        enabled: true
-        label: "Veuillez prouver que vous n'êtes pas un robot"
-        public_key: '6LevW1gUAAAAALUekVHYI7TcmtxqbOoFNs9cnYR3'
-        private_key: '6LevW1gUAAAAANQdp3FOMrWOhEdcJzzms59JuYTC'
-        error_message: "Veuillez cocher cette case pour continuer"
-        theme: basic
     notification:
         enabled: true
         debug: false
         debug_address: name@example.com
-        debug_smtp: true
-        subject: 'Votre message a bien été envoyé'
-        from_name: name
-        from_email: pompiersstjuliendeconcelles@gmail.com
-        replyto_email: email
-        replyto_name: name
-        to_name: 'My Site'
+        debug_smtp: false
+        subject: Une demande de contact a été formulée
+        from_name: [ prenom, nom ]
+        from_email: email
+        to_name: 'Sapeurs-pompiers de Saint Julien de Concelles'
         to_email: pompiersstjuliendeconcelles@gmail.com
     feedback:
         success: 'Votre message a bien été envoyé !'
         error: 'Certains champs du formulaire sont incorrects. Veuillez vérifier les données entrées.'
     templates:
-            form: partials/_contact.twig
+            email: email-contact.twig
     fields:
         prenom:
             type: text
             options:
                 label: Prénom
                 label_attr:
-                    class: 'text-danger'
+                    class: 'text-bleu'
                 required: true
                 attr:
                     placeholder: 'Votre prénom'
                     class: 'form-control'
+                constraints: [ {NotBlank: {'message': "Ce champ doit être rempli"}} ]
         nom:
             type: text
             options:
                 label: Nom
                 label_attr:
-                    class: 'text-danger'
+                    class: 'text-bleu'
                 required: true
                 attr:
                     placeholder: 'Votre nom'
                     class: 'form-control'
+                constraints: [ {NotBlank: {'message': "Ce champ doit être rempli"}} ]
         email:
-            type: text
+            type: email
             options:
                 required: true
                 label: 'Adresse e-mail'
                 label_attr:
-                    class: 'text-danger'
+                    class: 'text-bleu'
                 attr:
                     placeholder: 'Votre adresse mail'
                     class: 'form-control'
-                constraints:
-                    - NotBlank
-                    - Email
+                constraints: [ {NotBlank: {'message': "Ce champ doit être rempli"}}, {Email: {'message': "Cette adresse e-mail est invalide"}} ]
         objet:
             type: text
             options:
                 label: Objet
                 label_attr:
-                    class: 'text-danger'
+                    class: 'text-bleu'
                 required: true
                 attr:
                     placeholder: "L'objet de votre message"
                     class: 'form-control'
+                constraints: [ {NotBlank: {'message': "Ce champ doit être rempli"}} ]
         message:
             type: textarea
             options:
                 required: true
                 label: 'Votre message'
                 label_attr:
-                    class: 'text-danger'
+                    class: 'text-bleu'
                 attr:
                     placeholder: 'Votre message'
                     class: 'form-control'
                     rows: "20"
+                constraints: [ {NotBlank: {'message': "Ce champ doit être rempli"}} ]
         submit:
             type: submit
             options:
                 label: 'Envoyer mon message'
                 attr:
-                    class: 'btn btn-danger d-block mx-auto mt-4'
+                    class: 'btn btn-danger'
+                    prefix: '<div class="text-center">'
+                    postfix: '</div>'

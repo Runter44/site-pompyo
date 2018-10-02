@@ -35,8 +35,14 @@ contact:
          _controller: controller.frontend:template
          template: contact
 
+mentions_legales:
+    path: /mentions-legales
+    defaults:
+         _controller: controller.frontend:template
+         template: mentions-legales
+
 sitemap:
-  path: /sitemap
+  path: /plan-du-site
   defaults: { _controller: sitemap.controller:sitemap }
 
 sitemapXml:

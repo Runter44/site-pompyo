@@ -107,7 +107,19 @@ events:
             uses: title
         place:
             type: text
-            label: Lieu (*)
+            label: Nom du lieu (*)
+            required: true
+        place_street_adress:
+            type: text
+            label: Adresse : numéro et rue (*)
+            required: true
+        place_postal_code:
+            type: text
+            label: Adresse : code postal (*)
+            required: true
+        place_adress_locality:
+            type: text
+            label: Adresse : ville (*)
             required: true
         start_date:
             type: datetime
@@ -285,6 +297,23 @@ contact:
             group: Contact
     viewless: true
     singleton: true
+    default_status: published
+    icon_many: "fa:envelope"
+    icon_one: "fa:envelope"
+
+mentions_legales:
+    name: Mentions légales
+    singular_name: Mentions légales
+    fields:
+        mentions_legales_text:
+            type: html
+            label: Texte
+            required: true
+            height: 600px
+            group: Mentions légales
+    viewless: true
+    singleton: true
+    show_in_menu: false
     default_status: published
     icon_many: "fa:envelope"
     icon_one: "fa:envelope"

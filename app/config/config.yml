@@ -331,17 +331,17 @@ liveeditor: false
 # Protip: If your webhost does not support SMTP, sign up for a (free) Sparkpost
 # account at https://www.sparkpost.com/pricing/ for sending emails reliably.
 
-# mailoptions:
-#     transport: smtp
-#     spool: true
-#     host: localhost
-#     port: 25
-#     username: username
-#     password: password
-#     encryption: null
-#     auth_mode: null
-#     senderMail: null
-#     senderName: null
+mailoptions:
+    transport: smtp
+    spool: true
+    port: 465
+    host: smtp.gmail.com
+    username: pompiersstjuliendeconcelles@gmail.com
+    password: rd453v3s
+    encryption: ssl
+    auth_mode: null
+    senderMail: null
+    senderName: null
 
 # mailoptions:
 #     transport: mail

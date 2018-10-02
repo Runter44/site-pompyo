@@ -1,0 +1,12 @@
+{% extends 'partials/_master.twig' %}
+
+{% block title %}Mentions légales{% endblock title %}
+
+{% block body %}
+    {% setcontent mentions_legales = 'mentions_legales' limit 1 returnsingle %}
+
+    <div class="container py-3">
+        <h1 class="mb-3"><i class="fas fa-gavel"></i> Mentions légales</h1>
+        <p>{{ mentions_legales.mentions_legales_text }}</p>
+    </div>
+{% endblock body %}

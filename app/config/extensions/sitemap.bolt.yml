@@ -4,10 +4,8 @@ template: sitemap.twig
 xml_template: sitemap_xml.twig
 
 ignore:
-  - /page/home
-  - /page/error404
-  - /page/private
-  - /news/.*
+  - /galeries
+  - /galerie/.*
 
 ## ignore by "slug" of contenttype
 #ignore_contenttype:
