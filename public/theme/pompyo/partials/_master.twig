@@ -9,15 +9,18 @@
     <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css', 'theme') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css', 'theme') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png', 'theme') }}">
-    <link rel="sitemap" type="application/xml" title="Plan du site" href="/plan-site.xml" />
+    <link rel="sitemap" type="application/xml" title="Plan du site" href="/plan-site.xml"/>
     {% block stylesheets %}{% endblock %}
 </head>
 <body class="bg-white">
 
-<div class="container-fluid">
+<div class="container-fluid p-0">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6 p-0">
+            <div class="col-2 w-100 d-md-none btn_menu_mobile" onclick="openMenuMobile()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="col-10 col-md-6 p-0">
                 <a href="{{ path('homepage') }}">
                     <img src="{{ asset('images/logo_cis_couleur.png', 'theme') }}" alt="CIS Saint Julien de Concelles"
                          class="logoCentre img-fluid">
@@ -26,15 +29,27 @@
         </div>
     </div>
 </div>
-<div class="container-fluid bg-danger">
+<div class="container-fluid bg-danger" id="mainMenu">
     <div class="container">
         {#MENU#}
         <div class="d-md-flex text-center text-uppercase p-0">
-            <a href="{{ path('contentlisting', {'contenttypeslug': 'actualites'}) }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">Actualité</a>
-            <a href="{{ path('contentlisting', {'contenttypeslug': 'evenements'}) }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">&Eacute;vénements</a>
-            <a href="{{ path('join_us') }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">Nous rejoindre</a>
-            <a href="{{ path('le_centre') }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">Le centre</a>
-            <a href="{{ path('contact') }}" class="d-block d-md-inline-block lienMenu p-3 flex-fill">Contact</a>
+            <a href="{{ path('contentlisting', {'contenttypeslug': 'actualites'}) }}"
+               class="d-block d-md-inline-block lienMenu p-md-3 p-1 pt-2 flex-fill">
+                Actualité
+            </a>
+            <a href="{{ path('contentlisting', {'contenttypeslug': 'evenements'}) }}"
+               class="d-block d-md-inline-block lienMenu p-md-3 p-1 pt-2 flex-fill">
+                &Eacute;vénements
+            </a>
+            <a href="{{ path('join_us') }}" class="d-block d-md-inline-block lienMenu p-md-3 p-1 pt-2 flex-fill">
+                Nous rejoindre
+            </a>
+            <a href="{{ path('le_centre') }}" class="d-block d-md-inline-block lienMenu p-md-3 p-1 pt-2 flex-fill">
+                Le centre
+            </a>
+            <a href="{{ path('contact') }}" class="d-block d-md-inline-block lienMenu p-md-3 p-1 pt-2 flex-fill">
+                Contact
+            </a>
         </div>
     </div>
 </div>

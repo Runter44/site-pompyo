@@ -295,7 +295,7 @@ wysiwyg:
     anchor: false            # Adds a button to create internal anchors to link to.
     tables: false            # Adds a button to insert and modify tables in the content.
     fontcolor: false         # Allow users to mess around with font coloring.
-    align: false             # Adds buttons for 'align left', 'align right', etc.
+    align: true             # Adds buttons for 'align left', 'align right', etc.
     subsuper: false          # Adds buttons for subscript and superscript, using `<sub>` and `<sup>`.
     embed: true             # Allows the user to insert embedded video's from Youtube, Vimeo, etc.
     underline: false         # Adds a button to underline text, using the `<u>`-tag.

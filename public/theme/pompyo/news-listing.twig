@@ -4,25 +4,25 @@
 
 {% block body %}
     <div class="container pb-3">
-        <h1 class="my-3"><i class="far fa-newspaper"></i> Dernières actualités</h1>
+        <h1 class="my-md-3"><i class="far fa-newspaper"></i> Dernières actualités</h1>
 
         {% for record in records %}
-            <div class="row py-3 border-bottom border-danger divImgZoomHover">
+            <div class="row py-2 py-md-3 border-bottom border-danger divImgZoomHover">
                 {% if record.image is not empty %}
-                    <div class="col-3 imgContainerZoom">
+                    <div class="col-5 col-md-3 imgContainerZoom">
                         <a href="{{ record.link }}">
                             <img src="{{ thumbnail(record.values.image, 500, 350) }}" alt="{{ record.title }}"
                                  class="imageArticle">
                         </a>
                     </div>
                 {% endif %}
-                <div class="col-9 p-0 pl-3">
+                <div class="col-7 col-md-9 p-1 p-md-0 pl-md-3">
                     <a href="{{ record.link }}" class="lienArticle">
                         <h3 class="mb-0">{{ record.title }}</h3>
                     </a>
-                    <p class="small text-bleu mb-3">Le {{ record.datepublish|localedatetime("%e %B %Y") }},
-                        par {{ record.user.displayname }}</p>
-                    <p>{{ record.teaser|excerpt(300) }}</p>
+                    <p class="small text-bleu mb-3">Le {{ record.datepublish|localedatetime("%e %B %Y") }}
+                        <span class="d-none d-md-inline">, par {{ record.user.displayname }}</span></p>
+                    <p class="d-none d-md-block">{{ record.teaser|excerpt(300) }}</p>
                 </div>
             </div>
         {% else %}

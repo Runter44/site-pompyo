@@ -53,7 +53,7 @@
                         </div>
                         {% for personne in personnel %}
                             {% if personne.taxonomy != null and personne.taxonomy.equipes|first == equipe %}
-                                <div class="col-lg-2 col-sm-4 text-center mb-3">
+                                <div class="col-6 col-lg-2 col-sm-3 text-center mb-3">
                                     <img class="rounded-circle img-fluid d-block mx-auto mb-3"
                                          src="{{ personne.photo_profil|thumbnail(120,120) }}"
                                          alt="{{ personne.prenom }} {{ personne.nom }}">

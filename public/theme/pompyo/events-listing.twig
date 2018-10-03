@@ -8,29 +8,29 @@
 
         {% setcontent records = 'evenements' where {start_date: '>=now'} orderby 'start_date' %}
 
-        <h1 class="my-3"><i class="far fa-calendar-alt"></i> Prochains événements</h1>
+        <h1 class="my-md-3"><i class="far fa-calendar-alt"></i> Prochains événements</h1>
 
         {% for record in records %}
-            <div class="row py-3 border-bottom border-danger divImgZoomHover">
+            <div class="row py-2 py-md-3 border-bottom border-danger divImgZoomHover">
                 {% if record.image is not empty %}
-                    <div class="col-3 imgContainerZoom">
+                    <div class="col-5 col-md-3 imgContainerZoom">
                         <a href="{{ record.link }}">
                             <img src="{{ thumbnail(record.values.image, 500, 350) }}" alt="{{ record.title }}"
                                  class="imageArticle">
                         </a>
                     </div>
                 {% endif %}
-                <div class="col-9 p-0 pl-3">
+                <div class="col-7 col-md-9 p-1 p-md-0 pl-md-3">
                     <a href="{{ record.link }}" class="lienArticle">
                         <h3 class="mb-0">{{ record.title }}</h3>
                     </a>
-                    <p class="text-bleu mb-3">
+                    <p class="text-bleu mb-0 mb-md-3">
                         <i class="far fa-calendar-alt"></i>
                         <span class="font-weight-bold">
                             {{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
                         </span>
                     </p>
-                    <p>{{ record.teaser|excerpt(300) }}</p>
+                    <p class="d-none d-md-block">{{ record.teaser|excerpt(300) }}</p>
                 </div>
             </div>
         {% else %}

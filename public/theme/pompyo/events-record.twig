@@ -47,11 +47,11 @@
 
         {% if record.image is not empty %}
             <div class="row">
-                <div class="col-5">
+                <div class="col-md-5 mb-3 mb-md-0">
                     <img src="{{ record.image|image(1280, 660) }}" alt="{{ record.values.image.alt|default() }}"
                          style="max-width: 100%"/>
                 </div>
-                <div class="col-7">
+                <div class="col-md-7">
                     <h1 class="mb-3">{{ record.title }}</h1>
                     <h5 class="text-bleu{% if record.end_date == null %} mb-3{% endif %}">
                         <i class="far fa-calendar-alt"></i> {{ record.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}

@@ -44,6 +44,12 @@ p {
     background-size: cover;
 }
 
+.btn-a-la-une {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 .lienMenu {
     transition: 200ms;
     color: #FFFFFF;
@@ -295,4 +301,65 @@ textarea {
     color: #FFFFFF;
     text-align: center;
     font-weight: bold;
+}
+
+
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    h2, h3 {
+        font-size: 20px;
+    }
+
+    .lienArticle h3 {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    h5, h6 {
+        font-size: 16px;
+    }
+
+    p, li, a {
+        font-size: 14px;
+    }
+
+    .btn_menu_mobile {
+        display: block;
+        text-decoration: none;
+        padding: 11px 17px;
+        font-size: 25px;
+        cursor: pointer;
+        color: #dc3545;
+        text-align: center;
+    }
+
+    .btn-a-la-une {
+        position: relative;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .logoCentre {
+        height: 55px;
+        width: auto;
+    }
+
+    .lienMenu {
+        transition: 200ms;
+        color: #FFFFFF;
+        border-bottom: 1px solid #C70039;
+    }
+
+    .lienMenu:hover {
+        background-color: #dc3545;
+    }
 }
