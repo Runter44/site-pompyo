@@ -14,6 +14,12 @@ $(document).ready(function () {
         }
     });
 
+    $(".wysiwyg img").attr('onclick', 'openModalImage(this)');
+
+    $(".btn-accept-cookies").click(function () {
+        $(".bandeau-cookies").hide();
+        document.cookie = "cookies_accepted=true";
+    });
 });
 
 function openMenuMobile() {

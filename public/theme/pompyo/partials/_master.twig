@@ -12,6 +12,16 @@
     <link rel="sitemap" type="application/xml" title="Plan du site" href="/plan-site.xml"/>
     {% block stylesheets %}{% endblock %}
 </head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126949725-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126949725-1');
+</script>
+
 <body class="bg-white">
 
 <div class="container-fluid p-0">
@@ -58,6 +68,11 @@
     {% block body %}{% endblock %}
 </div>
 
+<div id="imageModale" class="imageModale">
+    <span class="closeImageModale" onclick="$(this).parent().hide()">&times;</span>
+    <img class="imgImageModale" id="imgImageModale">
+</div>
+
 <div class="container-fluid d-none d-md-block border-top border-danger piedDePage bg-dark">
     <div class="container py-3">
         <div class="row text-center">
@@ -90,6 +105,17 @@
         </div>
     </div>
 </div>
+
+{% if app.request.cookies.get('cookies_accepted') != "true" %}
+    <div class="bandeau-cookies">
+        <div class="container">
+            Ce site internet utilise des cookies pour son bon fonctionnement.
+            Par son utilisation vous en acceptez toutes les modalités.
+            <span class="btn-accept-cookies">&times;</span>
+        </div>
+    </div>
+{% endif %}
+
 <script src="{{ asset('js/jquery.min.js', 'theme') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js', 'theme') }}"></script>
 <script src="{{ asset('js/main.js', 'theme') }}"></script>

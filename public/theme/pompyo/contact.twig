@@ -7,9 +7,9 @@
 
     <div class="container py-3">
         <h1><i class="far fa-envelope"></i> Contact</h1>
-        <p>
+        <div class="wysiwyg">
             {{ contact.contact_text|raw }}
-        </p>
+        </div>
 
         {{ boltforms('contact') }}
     </div>

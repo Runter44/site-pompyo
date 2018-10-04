@@ -129,7 +129,35 @@ a:hover {
 
 /*PAGE D'ACCUEIL*/
 
+.bandeau-cookies {
+    background-color: #dc3545;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 15px 20px;
+    z-index: 999;
+    vertical-align: middle;
+}
+
+.bandeau-cookies .btn-accept-cookies {
+    float: right;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
 /*ARTICLES*/
+
+.wysiwyg img {
+    width: auto !important;
+    max-width: 40% !important;
+    height: auto !important;
+    max-height: 500px !important;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
 
 textarea {
     resize: none;
@@ -361,5 +389,9 @@ textarea {
 
     .lienMenu:hover {
         background-color: #dc3545;
+    }
+
+    .wysiwyg img {
+        max-width: 100% !important;
     }
 }
