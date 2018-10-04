@@ -184,6 +184,12 @@ le_centre:
     name: Le centre
     singular_name: Le centre
     fields:
+        presentation_text:
+            type: html
+            label: Texte de présentation du centre
+            required: true
+            height: 600px
+            group: Présentation
         armement:
             type: repeater
             label: Armement

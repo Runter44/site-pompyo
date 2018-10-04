@@ -12,7 +12,13 @@
 
         <ul class="nav nav-pills" id="tabCentre" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="personnel-tab" data-toggle="tab" href="#personnel" role="tab"
+                <a class="nav-link active" id="presentation-tab" data-toggle="tab" href="#presentation" role="tab"
+                   aria-controls="presentation" aria-selected="true">
+                    Présentation
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="personnel-tab" data-toggle="tab" href="#personnel" role="tab"
                    aria-controls="personnel" aria-selected="true">
                     Le personnel du CIS
                 </a>
@@ -44,7 +50,10 @@
         </ul>
 
         <div class="tab-content" id="tabCentreContent">
-            <div class="tab-pane p-3 fade show active" id="personnel" role="tabpanel" aria-labelledby="personnel-tab">
+            <div class="tab-pane p-3 fade wysiwyg show active" id="presentation" role="tabpanel" aria-labelledby="presentation-tab">
+                {{ content.presentation_text|raw }}
+            </div>
+            <div class="tab-pane p-3 fade" id="personnel" role="tabpanel" aria-labelledby="personnel-tab">
 
                 {% for equipe in app.config.get('taxonomy/equipes/options') %}
                     <div class="row">
