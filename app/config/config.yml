@@ -6,8 +6,11 @@
 #
 # If you're trying out Bolt, just keep it set to SQLite for now.
 database:
-    driver: sqlite
+    driver: postgres
+    username: sjaunet
+    password: ""
     databasename: pompyo
+    port: 5432
 
 # The name of the website
 sitename: Sapeurs-pompiers de Saint Julien de Concelles
