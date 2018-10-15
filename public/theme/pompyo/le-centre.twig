@@ -50,30 +50,33 @@
         </ul>
 
         <div class="tab-content" id="tabCentreContent">
-            <div class="tab-pane p-3 fade wysiwyg show active" id="presentation" role="tabpanel" aria-labelledby="presentation-tab">
+            <div class="tab-pane p-3 fade wysiwyg show active" id="presentation" role="tabpanel"
+                 aria-labelledby="presentation-tab">
                 {{ content.presentation_text|raw }}
             </div>
             <div class="tab-pane p-3 fade" id="personnel" role="tabpanel" aria-labelledby="personnel-tab">
 
                 {% for equipe in app.config.get('taxonomy/equipes/options') %}
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h4 class="my-4 text-danger">{{ equipe }}</h4>
+                    {% if equipe != "Anciens" %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="my-4 text-danger">{{ equipe }}</h4>
+                            </div>
+                            {% for personne in personnel %}
+                                {% if personne.taxonomy != null and personne.taxonomy.equipes|first == equipe %}
+                                    <div class="col-6 col-lg-2 col-sm-3 text-center mb-3">
+                                        <img class="rounded-circle img-fluid d-block mx-auto mb-3"
+                                             src="{{ personne.photo_profil|thumbnail(120,120) }}"
+                                             alt="{{ personne.prenom }} {{ personne.nom }}">
+                                        <h5 class="text-bleu">
+                                            {{ personne.prenom }} {{ personne.nom }}
+                                        </h5>
+                                        <p class="text-center">{{ personne.grade }}</p>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                         </div>
-                        {% for personne in personnel %}
-                            {% if personne.taxonomy != null and personne.taxonomy.equipes|first == equipe %}
-                                <div class="col-6 col-lg-2 col-sm-3 text-center mb-3">
-                                    <img class="rounded-circle img-fluid d-block mx-auto mb-3"
-                                         src="{{ personne.photo_profil|thumbnail(120,120) }}"
-                                         alt="{{ personne.prenom }} {{ personne.nom }}">
-                                    <h5 class="text-bleu">
-                                        {{ personne.prenom }} {{ personne.nom }}
-                                    </h5>
-                                    <p class="text-center">{{ personne.grade }}</p>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
+                    {% endif %}
                 {% endfor %}
 
             </div>
@@ -102,8 +105,26 @@
             <div class="tab-pane p-3 fade wysiwyg" id="jsp" role="tabpanel" aria-labelledby="jsp-tab">
                 {{ content.jsp_text|raw }}
             </div>
-            <div class="tab-pane p-3 fade wysiwyg" id="histoire" role="tabpanel" aria-labelledby="histoire-tab">
-                {{ content.history_text|raw }}
+            <div class="tab-pane p-3 fade" id="histoire" role="tabpanel" aria-labelledby="histoire-tab">
+                <span class="wysiwyg">{{ content.history_text|raw }}</span>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="text-danger">Nos anciens sapeurs-pompiers</h4>
+                    </div>
+                    {% for personne in personnel %}
+                        {% if personne.taxonomy != null and personne.taxonomy.equipes|first == "Anciens" %}
+                            <div class="col-6 col-lg-2 col-sm-3 text-center mb-3">
+                                <img class="rounded-circle img-fluid d-block mx-auto mb-3"
+                                     src="{{ personne.photo_profil|thumbnail(120,120) }}"
+                                     alt="{{ personne.prenom }} {{ personne.nom }}">
+                                <h5 class="text-bleu">
+                                    {{ personne.prenom }} {{ personne.nom }}
+                                </h5>
+                                <p class="text-center">{{ personne.grade }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
             <div class="tab-pane p-3 fade" id="media" role="tabpanel" aria-labelledby="media-tab">
                 <div class="row">

@@ -6,28 +6,31 @@
     <div class="container pb-3">
         <h1 class="my-md-3"><i class="far fa-newspaper"></i> Dernières actualités</h1>
 
-        {% for record in records %}
-            <div class="row py-2 py-md-3 border-bottom border-danger divImgZoomHover">
-                {% if record.image is not empty %}
-                    <div class="col-5 col-md-3 imgContainerZoom">
-                        <a href="{{ record.link }}">
-                            <img src="{{ thumbnail(record.values.image, 500, 350) }}" alt="{{ record.title }}"
-                                 class="imageArticle">
+        <div class="container">
+            {% for record in records %}
+                <div class="row py-2 py-md-3 border-bottom border-danger divImgZoomHover">
+                    {% if record.image is not empty %}
+                        <div class="col-5 col-md-3 imgContainerZoom">
+                            <a href="{{ record.link }}">
+                                <img src="{{ thumbnail(record.values.image, 500, 350) }}" alt="{{ record.title }}"
+                                     class="imageArticle">
+                            </a>
+                        </div>
+                    {% endif %}
+                    <div class="col-7 col-md-9 p-1 p-md-0 pl-md-3">
+                        <a href="{{ record.link }}" class="lienArticle">
+                            <h3 class="mb-0">{{ record.title }}</h3>
                         </a>
+                        <p class="text-bleu mb-3">
+                            Publié le {{ record.datepublish|localedatetime("%A %e %B %Y") }}
+                        </p>
+                        <p class="d-none d-md-block">{{ record.teaser|excerpt(300) }}</p>
                     </div>
-                {% endif %}
-                <div class="col-7 col-md-9 p-1 p-md-0 pl-md-3">
-                    <a href="{{ record.link }}" class="lienArticle">
-                        <h3 class="mb-0">{{ record.title }}</h3>
-                    </a>
-                    <p class="small text-bleu mb-3">Le {{ record.datepublish|localedatetime("%e %B %Y") }}
-                        <span class="d-none d-md-inline">, par {{ record.user.displayname }}</span></p>
-                    <p class="d-none d-md-block">{{ record.teaser|excerpt(300) }}</p>
                 </div>
-            </div>
-        {% else %}
-            <h4>Il semblerait qu'aucun article n'ait été publié. Veuillez réessayer plus tard.</h4>
-        {% endfor %}
+            {% else %}
+                <h4>Il semblerait qu'aucun article n'ait été publié. Veuillez réessayer plus tard.</h4>
+            {% endfor %}
+        </div>
 
         {{ pager(template = 'partials/_sub_pager.twig') }}
     </div>

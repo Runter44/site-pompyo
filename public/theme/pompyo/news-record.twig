@@ -49,8 +49,9 @@
                 </div>
                 <div class="col-md-7">
                     <h1 class="mb-2">{{ record.title }}</h1>
-                    <p class="text-bleu mb-3">Le {{ record.datepublish|localedatetime("%e %B %Y") }},
-                        par {{ record.user.displayname }}</p>
+                    <p class="text-bleu mb-3">
+                        Publié le {{ record.datepublish|localedatetime("%A %e %B %Y") }}
+                    </p>
                     <p>{{ record.teaser|excerpt(300) }}</p>
                 </div>
             </div>

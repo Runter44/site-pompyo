@@ -1,33 +1,33 @@
 # This file defines the different types of taxonomies in Bolt. See the
 # documentation for details: https://docs.bolt.cm/contenttypes/taxonomies
 
-tags:
-    slug: tags
-    singular_slug: tag
-    behaves_like: tags
-    postfix: "Add some freeform tags. Start a new tag by typing a comma or space."
-    allow_spaces: false
-    #listing_template: tag-listing.twig #custom template
-
-groups:
-    slug: groups
-    singular_slug: group
-    behaves_like: grouping
-    options: { main: "The main group", meta: "Meta group", other: "The other stuff" }
-    has_sortorder: true
-
-categories:
-    name: Categories
-    slug: categories
-    singular_name: Category
-    singular_slug: category
-    behaves_like: categories
-    multiple: true
-    options: [ news, events, movies, music, books, life, love, fun ]
+#tags:
+#    slug: tags
+#    singular_slug: tag
+#    behaves_like: tags
+#    postfix: "Add some freeform tags. Start a new tag by typing a comma or space."
+#    allow_spaces: false
+#    #listing_template: tag-listing.twig #custom template
+#
+#groups:
+#    slug: groups
+#    singular_slug: group
+#    behaves_like: grouping
+#    options: { main: "The main group", meta: "Meta group", other: "The other stuff" }
+#    has_sortorder: true
+#
+#categories:
+#    name: Categories
+#    slug: categories
+#    singular_name: Category
+#    singular_slug: category
+#    behaves_like: categories
+#    multiple: true
+#    options: [ news, events, movies, music, books, life, love, fun ]
 
 equipes:
     slug: equipes
     singular_slug: equipe
     behaves_like: grouping
-    options: { equipe1: "Équipe 1", equipe2: "Équipe 2", equipe3: "Équipe 3", equipe4: "Équipe 4", nonaffecte: "Non affecté", inactifs: "Inactifs", anciens: "Anciens" }
+    options: { equipe1: "Équipe 1", equipe2: "Équipe 2", equipe3: "Équipe 3", equipe4: "Équipe 4", infirmier: "Infirmier référent", nonaffecte: "Sans affectation", anciens: "Anciens" }
     has_sortorder: true

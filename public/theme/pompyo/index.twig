@@ -114,7 +114,7 @@
                     <h2 class="card-title">{{ event.title }}</h2>
                 </a>
                 <p class="text-bleu">
-                    <i class="far fa-calendar-alt"></i> {{ event.start_date|localedatetime("%A %e %B %Y à %Hh%M") }}
+                    <i class="far fa-calendar-alt"></i> {{ event.start_date|localedatetime("%A %e %B %Y à %Hh%M")|capitalize }}
                     <br>
                     <i class="far fa-building"></i> {{ event.place }}
                 </p>
