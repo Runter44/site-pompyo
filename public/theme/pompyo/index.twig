@@ -149,8 +149,7 @@
                                 </h4>
                             </a>
                             <p class="small text-bleu">
-                                Le {{ actualite.datepublish|localedatetime("%e %B %Y") }},
-                                par {{ actualite.user.displayname }}
+                                Publié le {{ actualite.datepublish|localedatetime("%A %e %B %Y") }}
                             </p>
                             <p class="card-text">
                                 {{ actualite.teaser|raw|excerpt(300) }}
