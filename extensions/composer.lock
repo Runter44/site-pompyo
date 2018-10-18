@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "175f4245c67dff7c929342d28242766a",
+    "content-hash": "42b8f94861b934f4fd158b426ac9084e",
     "packages": [
         {
             "name": "bolt/boltforms",
-            "version": "v4.2.3",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bolt/boltforms.git",
-                "reference": "b6b8d2151bf9d1e41fdf17d97180b377711ea118"
+                "reference": "babba498292dc4a8f8d426dcdc6dc8e295f69851"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bolt/boltforms/zipball/b6b8d2151bf9d1e41fdf17d97180b377711ea118",
-                "reference": "b6b8d2151bf9d1e41fdf17d97180b377711ea118",
+                "url": "https://api.github.com/repos/bolt/boltforms/zipball/babba498292dc4a8f8d426dcdc6dc8e295f69851",
+                "reference": "babba498292dc4a8f8d426dcdc6dc8e295f69851",
                 "shasum": ""
             },
             "require": {
@@ -78,7 +78,7 @@
                 "source": "https://github.com/bolt/boltforms/tree/4.2",
                 "issues": "https://github.com/bolt/boltforms/issues"
             },
-            "time": "2018-05-20T00:19:01+00:00"
+            "time": "2018-10-15T13:39:14+00:00"
         },
         {
             "name": "bolt/email-spooler",
