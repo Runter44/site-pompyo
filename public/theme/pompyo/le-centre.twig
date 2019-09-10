@@ -52,7 +52,7 @@
         <div class="tab-content" id="tabCentreContent">
             <div class="tab-pane p-3 fade wysiwyg show active" id="presentation" role="tabpanel"
                  aria-labelledby="presentation-tab">
-                {{ content.presentation_text|raw }}
+                {{ (content.presentation_text ?? '')|raw }}
             </div>
             <div class="tab-pane p-3 fade" id="personnel" role="tabpanel" aria-labelledby="personnel-tab">
 
@@ -81,32 +81,34 @@
 
             </div>
             <div class="tab-pane p-3 fade" id="armement" role="tabpanel" aria-labelledby="armement-tab">
-                <div class="row">
-                    {% set i = 1 %}
-                    {% for vehicule in content.armement %}
-                        <div class="col-lg-6 portfolio-item">
-                            <div class="card h-100 border-0">
-                                <img class="card-img-top" src="{{ vehicule.vehiculeimage|thumbnail(700,400) }}"
-                                     alt="Véhicule">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        {{ vehicule.vehiculename }}
-                                    </h4>
-                                    <p class="card-text">
-                                        {{ vehicule.vehiculedescription|raw }}
-                                    </p>
+                {% if content.armement is defined and content.armement is not empty %}
+                    <div class="row">
+                        {% set i = 1 %}
+                        {% for vehicule in content.armement %}
+                            <div class="col-lg-6 portfolio-item">
+                                <div class="card h-100 border-0">
+                                    <img class="card-img-top" src="{{ vehicule.vehiculeimage|thumbnail(700,400) }}"
+                                         alt="Véhicule">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            {{ vehicule.vehiculename }}
+                                        </h4>
+                                        <p class="card-text">
+                                            {{ vehicule.vehiculedescription|raw }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {% set i = i + 1 %}
-                    {% endfor %}
-                </div>
+                            {% set i = i + 1 %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
             <div class="tab-pane p-3 fade wysiwyg" id="jsp" role="tabpanel" aria-labelledby="jsp-tab">
-                {{ content.jsp_text|raw }}
+                {{ (content.jsp_text ?? '')|raw }}
             </div>
             <div class="tab-pane p-3 fade" id="histoire" role="tabpanel" aria-labelledby="histoire-tab">
-                <span class="wysiwyg">{{ content.history_text|raw }}</span>
+                <span class="wysiwyg">{{ (content.history_text ?? '')|raw }}</span>
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="text-danger">Nos anciens sapeurs-pompiers</h4>

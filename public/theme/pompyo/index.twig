@@ -32,7 +32,7 @@
 
     {% setcontent homepage = 'homepage/1' %}
 
-    {% if homepage.carousel_images is not empty %}
+    {% if homepage.carousel_images is defined and homepage.carousel_images is not empty %}
         <header>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -67,100 +67,112 @@
 
     <div class="container py-4">
 
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>A la une</h2>
-                <p>
-                    {{ homepage.a_la_une_text }}
-                </p>
-                <a href="{{ homepage.a_la_une_btn_link }}" class="btn-a-la-une btn btn-danger">
-                    {{ homepage.a_la_une_btn_text }}
-                </a>
+        {% if homepage.a_la_une_text is defined %}
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>A la une</h2>
+                    <p>
+                        {{ homepage.a_la_une_text }}
+                    </p>
+                    {% if homepage.a_la_une_btn_link is defined and homepage.a_la_une_btn_text is defined %}
+                        <a href="{{ homepage.a_la_une_btn_link }}" class="btn-a-la-une btn btn-danger">
+                            {{ homepage.a_la_une_btn_text }}
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="col-lg-6">
+                    <img class="img-fluid rounded" src="{% if homepage.a_la_une_image is defined %}{{ homepage.a_la_une_image|thumbnail(700, 450) }}{% else %}{% endif %}" alt="A la une">
+                </div>
             </div>
-            <div class="col-lg-6">
-                <img class="img-fluid rounded" src="{{ homepage.a_la_une_image|thumbnail(700, 450) }}" alt="A la une">
-            </div>
-        </div>
+        {% endif %}
 
-        <div class="row my-5">
-            <div class="col-md-9">
-                <h4 class="m-0">
-                    {{ homepage.cta_text }}
-                </h4>
+        {% if homepage.cta_text is defined %}
+            <div class="row my-5">
+                <div class="col-md-9">
+                    <h4 class="m-0">
+                        {{ homepage.cta_text }}
+                    </h4>
+                </div>
+                {% if homepage.cta_label is defined and homepage.cta_link is defined %}
+                    <div class="col-md-3">
+                        <a class="btn btn-lg btn-danger btn-block" href="{{ homepage.cta_link }}">{{ homepage.cta_label }}</a>
+                    </div>
+                {% endif %}
             </div>
-            <div class="col-md-3">
-                <a class="btn btn-lg btn-danger btn-block" href="{{ homepage.cta_link }}">{{ homepage.cta_label }}</a>
-            </div>
-        </div>
+        {% endif %}
 
         {% setcontent event = 'evenements' where {start_date: '>=now'} orderby 'start_date' limit 1 returnsingle %}
 
-        <h2>
-            Prochain événement
-            <a href="{{ path('contentlisting', {'contenttypeslug': 'evenements'}) }}" class="btn btn-outline-danger">
-                Tous les événements <i class="fas fa-angle-right"></i>
-            </a>
-        </h2>
+        {% if event is defined and event != false %}
+            <h2>
+                Prochain événement
+                <a href="{{ path('contentlisting', {'contenttypeslug': 'evenements'}) }}" class="btn btn-outline-danger">
+                    Tous les événements <i class="fas fa-angle-right"></i>
+                </a>
+            </h2>
 
-        <div class="row mb-4 divImgZoomHover">
-            <div class="col-lg-6 rounded">
-                <div class="imgContainerZoom" style="border-radius: 5px">
-                    <a href="{{ event.link }}">
-                        <img class="img-fluid rounded" src="{{ event.image|thumbnail(650,300) }}"
-                             alt="Prochain événement">
+            <div class="row mb-4 divImgZoomHover">
+                <div class="col-lg-6 rounded">
+                    <div class="imgContainerZoom" style="border-radius: 5px">
+                        <a href="{{ event.link }}">
+                            <img class="img-fluid rounded" src="{{ event.image|thumbnail(650,300) }}"
+                                 alt="Prochain événement">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <a href="{{ event.link }}" class="lienArticle">
+                        <h2 class="card-title">{{ event.title }}</h2>
                     </a>
+                    <p class="text-bleu">
+                        <i class="far fa-calendar-alt"></i> {{ event.start_date|localedatetime("%A %e %B %Y à %Hh%M")|capitalize }}
+                        <br>
+                        <i class="far fa-building"></i> {{ event.place }}
+                    </p>
+                    <p class="card-text">
+                        {{ event.teaser|excerpt(300) }}
+                    </p>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <a href="{{ event.link }}" class="lienArticle">
-                    <h2 class="card-title">{{ event.title }}</h2>
-                </a>
-                <p class="text-bleu">
-                    <i class="far fa-calendar-alt"></i> {{ event.start_date|localedatetime("%A %e %B %Y à %Hh%M")|capitalize }}
-                    <br>
-                    <i class="far fa-building"></i> {{ event.place }}
-                </p>
-                <p class="card-text">
-                    {{ event.teaser|excerpt(300) }}
-                </p>
-            </div>
-        </div>
+        {% endif %}
 
         {% setcontent actualites = 'actualites/latest/3' %}
 
-        <h2>
-            Dernières actualités
-            <a href="{{ path('contentlisting', {'contenttypeslug': 'actualites'}) }}" class="btn btn-outline-danger">
-                Toutes les actualités <i class="fas fa-angle-right"></i>
-            </a>
-        </h2>
+        {% if actualites is not empty %}
+            <h2>
+                Dernières actualités
+                <a href="{{ path('contentlisting', {'contenttypeslug': 'actualites'}) }}" class="btn btn-outline-danger">
+                    Toutes les actualités <i class="fas fa-angle-right"></i>
+                </a>
+            </h2>
 
-        <div class="row">
-            {% for actualite in actualites %}
-                <div class="col-lg-4 col-sm-6 mb-3 h-100 divImgZoomHover">
-                    <div class="card h-100">
-                        <div class="imgContainerZoom">
-                            <a href="{{ actualite.link }}">
-                                <img class="card-img-top" src="{{ actualite.image|thumbnail(700, 400) }}" alt="Article">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a href="{{ actualite.link }}" class="lienArticle">
-                                <h4 class="card-title text-danger">
-                                    {{ actualite.title }}
-                                </h4>
-                            </a>
-                            <p class="small text-bleu">
-                                Publié le {{ actualite.datepublish|localedatetime("%A %e %B %Y") }}
-                            </p>
-                            <p class="card-text">
-                                {{ actualite.teaser|raw|excerpt(300) }}
-                            </p>
+            <div class="row">
+                {% for actualite in actualites %}
+                    <div class="col-lg-4 col-sm-6 mb-3 h-100 divImgZoomHover">
+                        <div class="card h-100">
+                            <div class="imgContainerZoom">
+                                <a href="{{ actualite.link }}">
+                                    <img class="card-img-top" src="{{ actualite.image|thumbnail(700, 400) }}" alt="Article">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ actualite.link }}" class="lienArticle">
+                                    <h4 class="card-title text-danger">
+                                        {{ actualite.title }}
+                                    </h4>
+                                </a>
+                                <p class="small text-bleu">
+                                    Publié le {{ actualite.datepublish|localedatetime("%A %e %B %Y") }}
+                                </p>
+                                <p class="card-text">
+                                    {{ actualite.teaser|raw|excerpt(300) }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        {% endif %}
 
     </div>
 {% endblock body %}

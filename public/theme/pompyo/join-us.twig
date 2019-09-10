@@ -9,32 +9,34 @@
 
         <h1 class="my-3"><i class="fas fa-handshake"></i> Nous rejoindre</h1>
         <div class="wysiwyg">
-            {{ content.intro_text }}
+            {{ content.intro_text ?? '' }}
         </div>
 
-        <h2 class="my-4">Questions fréquentes</h2>
+        {% if content.questions is defined and content.questions is not empty %}
+            <h2 class="my-4">Questions fréquentes</h2>
 
-        <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
-            {% set i = 1 %}
-            {% for question in content.questions %}
-                <div class="card">
-                    <div class="card-header" role="tab" id="heading{{ i }}">
-                        <div class="question text-20 collapsed" data-toggle="collapse"
-                             data-parent="#accordion" href="#collapse{{ i }}" style="cursor: pointer"
-                             aria-expanded="false" aria-controls="collapse{{ i }}">
-                            <div class="question-image d-inline-block align-middle">{{ i }}</div>
-                            {{ question.repeatquestion }}
+            <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+                {% set i = 1 %}
+                {% for question in content.questions %}
+                    <div class="card">
+                        <div class="card-header" role="tab" id="heading{{ i }}">
+                            <div class="question text-20 collapsed" data-toggle="collapse"
+                                 data-parent="#accordion" href="#collapse{{ i }}" style="cursor: pointer"
+                                 aria-expanded="false" aria-controls="collapse{{ i }}">
+                                <div class="question-image d-inline-block align-middle">{{ i }}</div>
+                                {{ question.repeatquestion }}
+                            </div>
+                        </div>
+                        <div id="collapse{{ i }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ i }}">
+                            <div class="card-body">
+                                {{ question.repeatanswer|raw }}
+                            </div>
                         </div>
                     </div>
-                    <div id="collapse{{ i }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ i }}">
-                        <div class="card-body">
-                            {{ question.repeatanswer|raw }}
-                        </div>
-                    </div>
-                </div>
-                {% set i = i + 1 %}
-            {% endfor %}
-        </div>
+                    {% set i = i + 1 %}
+                {% endfor %}
+            </div>
+        {% endif %}
 
     </div>
 {% endblock body %}
